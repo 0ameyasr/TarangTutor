@@ -1,0 +1,12 @@
+const express = require('express');
+const router = express.Router();
+const chapterController = require('../controllers/chapterController');
+
+// Define a base path for Chapter routes
+router.get('/chapters', chapterController.getAllChapters);
+router.get('/chapters/:id', chapterController.getChapterById);
+router.post('/chapters', chapterController.createChapter);
+router.put('/chapters/:id', chapterController.updateChapterById);
+router.delete('/chapters/:id', chapterController.deleteChapterById);
+
+module.exports = router;
