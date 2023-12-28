@@ -12,50 +12,58 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
-    <title>Tarang's Tuitions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <title>Tarang's Tutorials</title>
 </head>
 <body>
+    <div id="transition-bar"></div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
+        <div class="container-fluid brand">
           <a class="navbar-brand" href="#">
-            <img src="images/emblem.png" width="94" height="96">
-            Tarang's Tuitions
-        </a>
+            <img src="images/emblem.png" width="93" height="95">
+            <b>
+                Tarang's Tutorials
+            </b>
+          </a>
           <button class="navbar-toggler override" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link nav-text active" aria-current="page" href="#">About</a>
+                <a class="nav-link nav-text active" aria-current="page" href="#"><i class="fa-solid fa-user-tie"></i>&nbsp;Portfolio</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link nav-text active" aria-current="page" href="#">Portfolio</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link nav-text active" aria-current="page" href="#">Testimonials</a>
+                <a class="nav-link nav-text active" aria-current="page" href="#"><i class="fa-regular fa-comments"></i>&nbsp;Testimonials</a>
               </li>
               &nbsp;
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle shining-element" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Courses
+                    <i class="fa-solid fa-book-bookmark"></i>&nbsp;Courses
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="#">Action</a></li>
                   <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>
               </li>
             </ul>
             <form class="d-flex">
               <input class="form-control me-2" type="search" placeholder="Search this site..." aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
+              <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
           </div>
         </div>
       </nav>
     <!--bs popper.js-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>AOS.init({once:true});</script>
+    <script>
+        document.getElementById("transition-bar").setAttribute("id","transition-bar-active");
+        document.body.style.overflowY='hidden';
+        setTimeout(function (){document.getElementById("transition-bar-active").remove();document.body.style.overflowY='auto';},3000);
+    </script>
 </body>
 </html>
