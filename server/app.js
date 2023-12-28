@@ -25,19 +25,19 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.static("public"));
 app.use(express.json());
 
-//importing the routes related to chapter,educatorRoutes,noteRoutes
+/*
 const educatorRoutes = require('./routes/educatorRoutes.js');
 const notesRoutes=require('./routes/noteRoutes.js');
-const chapterRoutes = require('./routes/chapterRoutes.js');
+const chapterRoutes = require('./routes/chapterRoutes.js');*/
 
 app.get('/', (req, res) => {
     res.render("index.ejs");
 });
 
-//created middleware to find related route if request comes
+/*created middleware to find related route if request comes
 app.use('/educator', educatorRoutes);
 app.use('/chapters',chapterRoutes);
-app.use('/notes',notesRoutes);
+app.use('/notes',notesRoutes);*/
 
 
 //establish MongoDB connection
