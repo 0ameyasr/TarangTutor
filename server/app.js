@@ -35,6 +35,16 @@ app.get('/', (req, res) => {
     res.render("index.ejs");
 });
 
+app.get('/portfolio',(req,res) => {
+    res.render("portfolio.ejs");
+})
+
+app.get('/testimonials',(req,res) => {
+    res.render("testimonials.ejs");
+})
+
+
+
 //created middleware to find related route if request comes
 app.use('/educator', educatorRoutes);
 app.use('/chapters',chapterRoutes);
