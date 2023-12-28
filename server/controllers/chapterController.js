@@ -1,5 +1,5 @@
-import Chapter from '../models/chapterModel.js';
-import { wrapAsync } from '../utils/wrapAsync.js';
+import Chapter from '../models/chapter.js';
+import wrapAsync from '../utils/wrapAsync.js';
 import ExpressError from '../utils/ExpressError.js';
 
 export const getAllChapters = wrapAsync(async (req, res) => {

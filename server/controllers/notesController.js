@@ -1,5 +1,5 @@
 import Note from '../models/Notes.js';
-import { wrapAsync } from '../utils/wrapAsync.js';
+import wrapAsync from '../utils/wrapAsync.js';
 import ExpressError from "../utils/ExpressError.js";
 
 // Controller methods

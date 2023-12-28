@@ -35,10 +35,10 @@ app.get('/', (req, res) => {
     res.render("index.ejs");
 });
 
-/*created middleware to find related route if request comes
+//created middleware to find related route if request comes
 app.use('/educator', educatorRoutes);
 app.use('/chapters',chapterRoutes);
-app.use('/notes',notesRoutes);*/
+app.use('/notes',notesRoutes);
 
 
 //establish MongoDB connection

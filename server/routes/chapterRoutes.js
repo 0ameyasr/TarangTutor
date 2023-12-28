@@ -6,7 +6,7 @@ import {
   createChapter,
   updateChapterById,
   deleteChapterById
-} from '../controllers/chapterController';
+} from '../controllers/chapterController.js';
 
 // Define routes using individual controller methods
 router.get('/', getAllChapters);

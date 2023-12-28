@@ -7,7 +7,7 @@ import {
   } from '../controllers/educatorController.js';
   
   
-const express = require('express');
+import express from 'express';
 const router = express.Router();
 
 // Routes for educators

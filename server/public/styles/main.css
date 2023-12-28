@@ -129,6 +129,9 @@ footer{
   footer {
     background: linear-gradient(90deg, rgba(131, 58, 180, 0.8), rgba(253, 29, 29, 0.7), rgba(252, 176, 69, 0.75));
     background-size: 200% 200%;
+  }
+  
+  .smooth-bg{
     animation: smooth-background 5s infinite;
   }
 
@@ -170,9 +173,32 @@ footer{
 
 .row{
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
     align-items: center;
-    justify-content: center;
-    padding: 10px;
+    justify-content: space-between;
+    padding: 50px;
+    margin-left: 20px;
+}
+
+@keyframes do-bounce{
+    0%{
+        transform: translateY(+2%);
+    }
+    25%{
+        transform: translateY(-1%);
+    }
+    75%{
+        transform: translateY(-1%);
+    }
+    100%{
+        transform: translateY(+2%);
+    }
+}
+
+.hover-bounce:hover{
+    animation:do-bounce 1s infinite;
+    cursor: pointer;
+}
+
+.info-hook{
+    background: linear-gradient(90deg, #f8ff00 0%, #3ad59f 100%);
 }

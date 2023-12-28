@@ -1,5 +1,5 @@
 import Educator from '../models/educatorInfo.js';
-import { wrapAsync } from '../utils/wrapAsync.js';
+import wrapAsync from '../utils/wrapAsync.js';
 import ExpressError from "../utils/ExpressError.js";
 
 // Get details of all educators
