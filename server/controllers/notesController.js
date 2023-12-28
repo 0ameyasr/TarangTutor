@@ -1,22 +1,14 @@
-const Note = require('../models/Notes.js');
-// const multer = require('multer');
-const path = require('path');
-const { wrapAsync } = require('../utils/wrapAsync');
-
-
-  
-
+import Note from '../models/Notes.js';
+import { wrapAsync } from '../utils/wrapAsync.js';
+import ExpressError from "../utils/ExpressError.js";
 
 // Controller methods
-module.exports.getAllNotes = wrapAsync(async (req, res) => {
+export const getAllNotes = wrapAsync(async (req, res, next) => {
   const notes = await Note.find({ chapter: req.params.chapterId });
   res.json(notes);
 });
 
-
-
-
-module.exports.createNote = wrapAsync(async (req, res) => {
+export const createNote = wrapAsync(async (req, res, next) => {
   const { title, content, noteLink } = req.body;
   const newNote = new Note({
     title,
@@ -24,27 +16,26 @@ module.exports.createNote = wrapAsync(async (req, res) => {
     noteLink,
     chapter: req.params.chapterId
   });
+
   const savedNote = await newNote.save();
   res.status(201).json({ message: 'Note created', note: savedNote });
 });
 
-
-module.exports.updateNote = wrapAsync(async (req, res) => {
+export const updateNote = wrapAsync(async (req, res, next) => {
   const { id } = req.params;
   const updatedNote = await Note.findByIdAndUpdate(id, req.body, { new: true });
   if (!updatedNote) {
-    res.status(404).json({ message: 'Note not found' });
+    throw new ExpressError('Note not found', 404);
   }
   res.json(updatedNote);
 });
 
-module.exports.deleteNote = wrapAsync(async (req, res) => {
+export const deleteNote = wrapAsync(async (req, res, next) => {
   const { id } = req.params;
   const deletedNote = await Note.findByIdAndDelete(id);
   if (!deletedNote) {
-    res.status(404).json({ message: 'Note not found' });
+    throw new ExpressError('Note not found', 404);
   }
   res.json({ message: 'Note deleted' });
 });
-
 

@@ -1,6 +1,7 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const notesController = require('../controllers/notesController');
+import * as notesController from '../controllers/notesController.js';
+
 
 // Get all notes for a specific chapter
 router.get('/chapters/:chapterId', notesController.getAllNotes);
@@ -14,4 +15,4 @@ router.patch('/:id', notesController.updateNote);
 // Delete a specific note
 router.delete('/:id', notesController.deleteNote);
 
-module.exports = router;
+export default router;
