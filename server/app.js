@@ -25,9 +25,20 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname,"/public")));
 app.use(express.json());
 
+//importing the routes related to chapter,educatorRoutes,noteRoutes
+const educatorRoutes = require('./routes/educatorRoutes.js');
+const notesRoutes=require('./routes/noteRoutes.js');
+const chapterRoutes = require('./routes/chapterRoutes.js');
+
 app.get('/', (req, res) => {
     res.render("index.ejs")
 });
+
+//created middleware to find related route if request comes
+app.use('/educator', educatorRoutes);
+app.use('/chapters',chapterRoutes);
+app.use('/notes',notesRoutes);
+
 
 //establish MongoDB connection
 mongoose.connect(MONGO_URL)
@@ -40,10 +51,12 @@ mongoose.connect(MONGO_URL)
         console.log(err)
     });
 
+//this is used to handle the route that doesnot exist
 app.all("*", (req, res, next) => {
     next(new ExpressError(404, "page not found"));
 }); 
 
+//this middleware will handle the error if comes and pass the message to default error handler
 app.use((err, req, res, next) => {
     let { statusCode = 500, message = "something went wrong" } = err;
     res.status(statusCode).send(err.message);  
