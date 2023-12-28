@@ -1,5 +1,4 @@
-//This collection stores details about Tarang Sir, including personal information, skills, achievements, videos, notes, testimonials, and social media handles.
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const educatorSchema = new mongoose.Schema({
   name: String,
@@ -16,16 +15,15 @@ const educatorSchema = new mongoose.Schema({
   demoNotes: {
     title: String,
     content: String,
-    notesURL:String
+    notesURL: String
   },
   socialMediaHandles: {
     twitter: String,
     facebook: String,
     linkedin: String,
-    
   }
 });
 
 const Educator = mongoose.model('Educator', educatorSchema);
 
-module.exports = Educator;
+export default Educator;

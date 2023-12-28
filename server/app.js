@@ -26,9 +26,10 @@ app.use(express.static("public"));
 app.use(express.json());
 
 //importing the routes related to chapter,educatorRoutes,noteRoutes
-const educatorRoutes = require('./routes/educatorRoutes.js');
-const notesRoutes=require('./routes/noteRoutes.js');
-const chapterRoutes = require('./routes/chapterRoutes.js');
+import educatorRoutes from './routes/educatorRoutes.js';
+import notesRoutes from './routes/noteRoutes.js';
+import chapterRoutes from './routes/chapterRoutes.js';
+
 
 app.get('/', (req, res) => {
     res.render("index.ejs");
