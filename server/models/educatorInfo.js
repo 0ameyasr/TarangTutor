@@ -15,7 +15,8 @@ const educatorSchema = new mongoose.Schema({
   },
   demoNotes: {
     title: String,
-    content: String
+    content: String,
+    notesURL:string
   },
   socialMediaHandles: {
     twitter: String,
