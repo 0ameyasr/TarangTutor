@@ -1,5 +1,6 @@
-const Educator = require('../models/educatorInfo');
-const wrapAsync = require("../utils/wrapAsync.js");
+import Educator from '../models/educatorInfo.js';
+import { wrapAsync } from '../utils/wrapAsync.js';
+
 
 // Get details of all educators
 exports.getAllEducators = wrapAsync(async (req, res) => {

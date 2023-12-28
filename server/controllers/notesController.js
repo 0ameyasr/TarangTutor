@@ -1,7 +1,6 @@
-const Note = require('../models/Notes.js');
-// const multer = require('multer');
-const path = require('path');
-const { wrapAsync } = require('../utils/wrapAsync');
+import Note from '../models/Notes.js';
+import { wrapAsync } from '../utils/wrapAsync.js';
+
 
 
   

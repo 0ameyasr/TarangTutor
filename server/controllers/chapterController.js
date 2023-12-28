@@ -1,5 +1,5 @@
-const Chapter = require('../models/chapterModel');
-const { wrapAsync } = require('../utils/wrapAsync');
+import Chapter from '../models/chapterModel.js';
+import { wrapAsync } from '../utils/wrapAsync.js';
 
 // Get details of all chapters
 exports.getAllChapters = wrapAsync(async (req, res) => {
