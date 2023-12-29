@@ -209,7 +209,21 @@ footer{
 .new-link:hover{
     text-decoration: underline;
 }
-
+.nav-link.new-footer-link{
+    text-decoration: none;
+    color: white;
+}
+.nav-link.new-footer-link:hover{
+    color:black;
+    cursor: pointer;
+}
+.new-footer-link{
+    color:white;
+    text-decoration: none;
+}
+.new-footer-link:hover{
+    color: black;
+}
 .bg-card{
     background-size: 101% 101%;
     background-repeat: no-repeat;

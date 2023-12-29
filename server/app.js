@@ -5,6 +5,7 @@ dotenv.config();
 //define the importable dependencies
 import express from 'express';
 import mongoose from 'mongoose';
+import morgan from 'morgan';
 import ExpressError from './utils/ExpressError.js';
 import path from 'path';
 import ejsMate from 'ejs-mate';
@@ -24,6 +25,7 @@ app.use(methodOverride("_method"));
 app.use(express.urlencoded({extended:true}));
 app.use(express.static("public"));
 app.use(express.json());
+app.use(morgan("combined"));
 
 //importing the routes related to chapter,educatorRoutes,noteRoutes
 import educatorRoutes from './routes/educatorRoutes.js';
@@ -37,19 +39,33 @@ app.get('/', (req, res) => {
 
 app.get('/portfolio',(req,res) => {
     res.render("portfolio.ejs");
-})
+});
 
 app.get('/testimonials',(req,res) => {
     res.render("testimonials.ejs");
-})
+});
 
+app.get('/courses',(req,res)=>{
+    res.render("courses.ejs");
+});
+
+app.get('/contact',(req,res)=>{
+    res.render("contact.ejs");
+});
+
+app.get('/admin',(req,res)=>{
+    res.render("admin.ejs")
+});
+
+app.post('/auth',(req,res)=>{
+    res.send("authenticated");
+})
 
 
 //created middleware to find related route if request comes
 app.use('/educator', educatorRoutes);
 app.use('/chapters',chapterRoutes);
 app.use('/notes',notesRoutes);
-
 
 //establish MongoDB connection
 mongoose.connect(MONGO_URL)

@@ -1,50 +1,65 @@
+<footer
+  class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
+>
+  <p class="col-md-4 mb-0 text-body-secondary" style="color: white;">&copy; <%= new Date().getFullYear()%> WebForge &bull; Tarang's Tutorials</p>
 
-    <footer class="py-5 bg-light smooth-bg">
-      <div class="container-fluid row footer-container">
-        <div class="col-6 col-md-2 mb-3">
-          <h5>Quick Links</h5>
-          <ul class="nav flex-column">
-            <li class="nav-item mb-2"><a href="#" class="nav-link footer-text p-0 ">Home</a></li>
-            <li class="nav-item mb-2"><a href="#" class="nav-link footer-text p-0 ">Portfolio</a></li>
-            <li class="nav-item mb-2"><a href="#" class="nav-link footer-text p-0 ">Testimonials</a></li>
-            <li class="nav-item mb-2"><a href="#" class="nav-link footer-text p-0 ">Courses</a></li>
-          </ul>
-        </div>
+  <ul class="nav col-md-4 justify-content-end">
+    <li class="nav-item">
+      <a class="nav-link new-footer-link text-body-secondary footer-home"
+        >Home</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link new-footer-link px-2 text-body-secondary footer-portfolio"
+        >Portfolio</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link new-footer-link px-2 text-body-secondary footer-testimonials"
+        >Testimonials</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link new-footer-link px-2 text-body-secondary footer-courses"
+        >Courses</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link new-footer-link px-2 text-body-secondary footer-contact"
+        >Contact</a
+      >
+    </li>
+  </ul>
+  <p><a class="new-footer-link" href="#"><i class="fa-solid fa-arrow-up"></i></a></p>
+</footer>
+<script>
+    // GET index
+    document.querySelector(".footer-home").addEventListener("click", function () {
+      window.location.href = "/";
+    });
   
-        <div class="col-6 col-md-2 mb-3">
-          <h5>About Us</h5>
-          <ul class="nav flex-column">
-            <li class="nav-item mb-2"><a href="#" class="nav-link footer-text p-0 ">Bio</a></li>
-            <li class="nav-item mb-2"><a href="#" class="nav-link footer-text p-0 ">Philosophy</a></li>
-            <li class="nav-item mb-2"><a href="#" class="nav-link footer-text p-0 ">Background</a></li>
-          </ul>
-        </div>
-
-        <div class="col-6 col-md-2 mb-3">
-            <h5>Portfolio</h5>
-            <ul class="nav flex-column">
-              <li class="nav-item mb-2"><a href="#" class="nav-link footer-text p-0 ">Skills</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link footer-text p-0 ">Achievements</a></li>
-            </ul>
-          </div>
-
-          <div class="col-6 col-md-2 mb-3">
-            <h5>Testimonials</h5>
-            <ul class="nav flex-column">
-              <li class="nav-item mb-2"><a href="#" class="nav-link footer-text p-0 ">Experiences</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link footer-text p-0 ">Reviews</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link footer-text p-0 ">Success Stories</a></li>
-            </ul>
-          </div>
+    // GET portfolio
+    document.querySelector(".footer-portfolio").addEventListener("click", function () {
+      window.location.href = "/portfolio";
+    });
   
-      </div>
+    // GET testimonials
+    document.querySelector(".footer-testimonials").addEventListener("click", function () {
+      window.location.href = "/testimonials";
+    });
   
-      <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-        <p style="color:white">&copy; <%= new Date().getFullYear() %> WebForge &bull; Tarang's Tutorials</p>
-        <ul class="list-unstyled d-flex">
-          <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg></a></li>
-          <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
-          <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
-        </ul>
-      </div>
-    </footer>
+    // GET courses
+    document.querySelector(".footer-courses").addEventListener("click", function () {
+      window.location.href = "/courses";
+    });
+  
+    // GET contact
+    document.querySelector(".footer-contact").addEventListener("click", function () {
+      window.location.href = "/contact";
+    });
+  </script>
+  
