@@ -1,11 +1,10 @@
 *{
     font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
 }
-
-body{
-    overflow-x:hidden;
-}
-
+h1, h2, h3, h4, h5, h6 {
+    overflow: hidden;
+  }
 .navbar-toggler.override{
     border: none;
 }
@@ -30,6 +29,7 @@ body{
 }
 
 footer{
+    font-family: 'Poppins', sans-serif;
     width: 100vw;
     padding: 50px;
 }
@@ -52,19 +52,6 @@ footer{
     animation: shine 4s linear infinite;
 }
 
-/*webkit-based scrollbar implementation styling*/
-::-webkit-scrollbar {
-    width: 1rem;
-}
-::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
-::-webkit-scrollbar-thumb {
-    background-color: rgba(0,0,0,0.5);
-}
-::-webkit-scrollbar-thumb:hover {
-    background-color: gray;
-}
 
 .footer-container{
     display: flex;
@@ -128,6 +115,7 @@ footer{
   footer {
     background: linear-gradient(90deg, rgba(131, 58, 180, 0.8), rgba(253, 29, 29, 0.7), rgba(252, 176, 69, 0.75));
     background-size: 200% 200%;
+    overflow: auto;
   }
 
   .smooth-bg{
@@ -209,7 +197,21 @@ footer{
 .new-link:hover{
     text-decoration: underline;
 }
-
+.nav-link.new-footer-link{
+    text-decoration: none;
+    color: white;
+}
+.nav-link.new-footer-link:hover{
+    color:black;
+    cursor: pointer;
+}
+.new-footer-link{
+    color:white;
+    text-decoration: none;
+}
+.new-footer-link:hover{
+    color: black;
+}
 .bg-card{
     background-size: 101% 101%;
     background-repeat: no-repeat;
@@ -228,3 +230,8 @@ footer{
 .card-back{
     background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
 }
+
+.no-overflow-y{
+    overflow-y: hidden;
+}
+
