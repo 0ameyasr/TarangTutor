@@ -29,7 +29,7 @@
     <title>Tarang's Tutorials</title>
   </head>
   <body>
-    <!--div id="transition-bar"></div-->
+    <div id="transition-bar"></div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid brand">
         <a class="navbar-brand home" href="#">
@@ -85,7 +85,10 @@
               aria-label="Search"
             />
             <button class="btn btn-outline-success" type="submit">
-              <i class="fa-solid fa-magnifying-glass"></i>
+              <i
+                class="fa-solid fa-magnifying-glass"
+                style="font-size: 13px"
+              ></i>
             </button>
           </form>
         </div>
@@ -130,11 +133,9 @@
         });
 
       // GET testimonials
-      document
-        .querySelector(".courses")
-        .addEventListener("click", function () {
-          window.location.href = "/courses";
-        });
+      document.querySelector(".courses").addEventListener("click", function () {
+        window.location.href = "/courses";
+      });
     </script>
   </body>
 </html>

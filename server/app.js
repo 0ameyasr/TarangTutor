@@ -10,10 +10,15 @@ import ExpressError from './utils/ExpressError.js';
 import path from 'path';
 import ejsMate from 'ejs-mate';
 import methodOverride from 'method-override';
+//import {RecaptchaV2} from 'express-recaptcha';
+
 //define the server credentials
 const app = express();
 const PORT = process.env.PORT;
 const MONGO_URL = process.env.MONGO_URL;
+const SITE_KEY = process.env.SITE_KEY;
+const SECRET_KEY = process.env.SECRET_KEY;
+//const recaptcha = new RecaptchaV2(SITE_KEY,SECRET_KEY);
 
 //set directive for static views + ejsMate 
 app.set("view engine", "ejs");
@@ -54,11 +59,24 @@ app.get('/contact',(req,res)=>{
 });
 
 app.get('/admin',(req,res)=>{
-    res.render("admin.ejs")
+    const dat={
+        site_key:SITE_KEY,
+    };
+    res.render("admin.ejs",{site_key:SITE_KEY});
 });
 
 app.post('/auth',(req,res)=>{
-    res.send("authenticated");
+
+    if(req.body["entered_pass"]===process.env.PASSKEY){
+        res.render("dashboard.ejs");
+    }
+    else{
+        res.render("error.ejs");
+    }
+});
+
+app.get('/demos',(req,res)=>{
+    res.render("demos.ejs");
 })
 
 
@@ -70,7 +88,7 @@ app.use('/notes',notesRoutes);
 //establish MongoDB connection
 mongoose.connect(MONGO_URL)
     .then(() => {
-        app.listen(PORT, (req, res)=>{
+        app.listen(PORT,(req, res)=>{
             console.log(`listening @port ${PORT}`);
         })
     })

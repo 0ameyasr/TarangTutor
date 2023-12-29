@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <div class="p-1 mb-4 bg-body-tertiary rounded-3 container-txt" data-aos="fade-right" data-aos-offset="100" data-aos-easing="ease-in-sine" data-aos-anchor-placement="center-bottom">
+    <div class="p-1 mb-4 bg-body-tertiary rounded-3 container-txt">
       <div class="container-fluid py-5">
         <h1 class="display-5 fw-bold text-center">Level up your <span class="animated-color">Physics</span>&nbsp;<i class="fa-solid fa-arrow-trend-up"></i></h1>
         <center>
@@ -14,7 +14,7 @@
 
     <div class="row align-items-md-stretch" >
       <div class="col-md-6" data-aos="fade-zoom-in" data-aos-offset="50" data-aos-easing="ease-in-back" data-aos-anchor-placement="center-bottom">
-        <div class="h-100 p-5 text-bg-dark rounded-3 fs-5">
+        <div class="h-100 p-1 text-bg-dark rounded-3 fs-5">
           <h2>From 10<sup>th</sup> to JEE</h2>
           <p class="info">
             Not only do we strengthen your fundamentals on the 10+2 level, but we
@@ -23,15 +23,22 @@
         </div>
       </div>
       <div class="col-md-6" data-aos="fade-zoom-in" data-aos-offset="50" data-aos-easing="ease-in-back" data-aos-anchor-placement="center-bottom">
-        <div class="h-100 p-5 bg-body-tertiary border rounded-3">
+        <div class="h-100 p-1 bg-body-tertiary border rounded-3">
           <h2>Get a free Demo</h2>
           <p class="info">
             Try our demo notes and lectures for free to have a better insight into our teaching strategy.
             Tarang's Tutorials' interactive and inquisitive sessions on even some of the most complex topics
             make sure that you get a good grasp on your fundamentals with the help of the experienced Tarang Bombale.
           </p>
-          <button class="btn btn-outline-dark" type="button">Let's Go</button>
+          <button class="btn btn-outline-dark demos" type="button">Let's Go</button>
         </div>
       </div>
     </div>
 </div>
+
+<script>
+    // GET testimonials
+    document.querySelector(".demos").addEventListener("click", function () {
+        window.location.href = "/demos";
+      });
+</script>

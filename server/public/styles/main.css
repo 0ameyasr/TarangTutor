@@ -29,6 +29,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 footer{
+    font-family: 'Poppins', sans-serif;
     width: 100vw;
     padding: 50px;
 }
@@ -114,6 +115,7 @@ footer{
   footer {
     background: linear-gradient(90deg, rgba(131, 58, 180, 0.8), rgba(253, 29, 29, 0.7), rgba(252, 176, 69, 0.75));
     background-size: 200% 200%;
+    overflow: auto;
   }
 
   .smooth-bg{
@@ -228,3 +230,8 @@ footer{
 .card-back{
     background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
 }
+
+.no-overflow-y{
+    overflow-y: hidden;
+}
+
