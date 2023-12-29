@@ -4,7 +4,7 @@ import {
     getEducatorById,
     updateEducatorById,
     deleteEducatorById,
-  } from '../controllers/educatorController.js';
+  } from '../controllers/EducatorController.js';
   
   
 import express from 'express';
