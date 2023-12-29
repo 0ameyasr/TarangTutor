@@ -32,7 +32,7 @@
     <div id="transition-bar"></div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid brand">
-        <a class="navbar-brand" id="home" href="#">
+        <a class="navbar-brand home" href="#">
           <img src="images/emblem.png" width="93" height="95" />
           <b> Tarang's Tutorials </b>
         </a>
@@ -49,40 +49,32 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
+            <li class="nav-item spaced">
               <a
-                class="nav-link nav-text active"
+                class="nav-link nav-text active portfolio"
                 aria-current="page"
-                id="portfolio"
                 href="#"
                 ><i class="fa-solid fa-user-tie"></i>&nbsp;Portfolio</a
               >
             </li>
-            <li class="nav-item">
-              <a class="nav-link nav-text active" 
-                 aria-current="page" 
-                 id="testimonials"
-                 href="#"
+
+            <li class="nav-item spaced">
+              <a
+                class="nav-link nav-text active testimonials"
+                aria-current="page"
+                href="#"
                 ><i class="fa-regular fa-comments"></i>&nbsp;Testimonials</a
               >
             </li>
-            &nbsp;
-            <li class="nav-item dropdown">
+
+            <li class="nav-item spaced">
               <a
-                class="nav-link dropdown-toggle shining-element"
+                class="nav-link nav-text active courses shining-element"
+                aria-current="page"
                 href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
               >
                 <i class="fa-solid fa-book-bookmark"></i>&nbsp;Courses
               </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">10<sup>th</sup> CBSE Physics</a></li>
-                <li><a class="dropdown-item" href="#">12<sup>th</sup> CBSE Physics</a></li>
-                <li><a class="dropdown-item" href="#">JEE Physics (Main & Adv.)</a></li>
-              </ul>
             </li>
           </ul>
           <form class="d-flex">
@@ -93,7 +85,10 @@
               aria-label="Search"
             />
             <button class="btn btn-outline-success" type="submit">
-              <i class="fa-solid fa-magnifying-glass"></i>
+              <i
+                class="fa-solid fa-magnifying-glass"
+                style="font-size: 13px"
+              ></i>
             </button>
           </form>
         </div>
@@ -118,24 +113,29 @@
         document.body.style.overflowY = "auto";
       }, 2000);
 
-      //GET index
-      document.getElementById("home").addEventListener("click", function () {
+      // GET index
+      document.querySelector(".home").addEventListener("click", function () {
         window.location.href = "/";
       });
 
-      //GET portfolio
+      // GET portfolio
       document
-        .getElementById("portfolio")
+        .querySelector(".portfolio")
         .addEventListener("click", function () {
           window.location.href = "/portfolio";
         });
 
-       //GET testimonials
-       document
-        .getElementById("testimonials")
+      // GET testimonials
+      document
+        .querySelector(".testimonials")
         .addEventListener("click", function () {
           window.location.href = "/testimonials";
         });
+
+      // GET testimonials
+      document.querySelector(".courses").addEventListener("click", function () {
+        window.location.href = "/courses";
+      });
     </script>
   </body>
 </html>
