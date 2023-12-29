@@ -53,6 +53,8 @@ app.get('/', async (req, res) => {
     }
   });
 
+app.post("/reviews",createReview);
+
 app.get('/portfolio',(req,res) => {
     res.render("portfolio.ejs");
 });
