@@ -6,5 +6,22 @@
 <%-include("partials/infohook.ejs")%>
 <br>
 <%-include("partials/demofeatures.ejs")%>
+<%-include("partials/rating.ejs")%>
+<p><b>All Reviews</b></p>
+<div class="row">
+  <% for (let i = 0; i < reviews.length; i++) { %>
+    <div class="card custom-border col-5 ms-5 mb-3">
+      <div class="card-body">
+        <h5 class="card-title"><%= reviews[i].author %></h5>
+        <p class="card-text">
+          <%= reviews[i].comment %>
+        </p>
+        <p class="starability-result card-text" data-rating="<%= reviews[i].rating %>">
+          <%= reviews[i].rating %> star
+        </p>
+      </div>
+    </div>
+  <% } %>
+</div>
 <!--Conclude the page with a footer-->
 <br><%-include("partials/footer.ejs")%>

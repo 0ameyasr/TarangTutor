@@ -1,4 +1,4 @@
-import Chapter from '../models/chapter.js';
+import Chapter from '../models/chapterModel.js';
 import wrapAsync from '../utils/wrapAsync.js';
 import ExpressError from '../utils/ExpressError.js';
 
