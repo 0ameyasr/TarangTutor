@@ -29,17 +29,15 @@
   </head>
   <body>
     <!-- Navbar -->
-   
 
     <!-- Page Content -->
     <div class="container-fluid">
       <div class="row">
-        <!-- Sidebar -->
         <div
           class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark bg-dark"
-          style="width: 30vh;height: 100vh;"
+          style="width: 33vh; height: 1fr"
         >
-            <span class="fs-4" style="color: white;">Admin Portal</span>
+          <span class="fs-4" style="color: white">Admin Portal</span>
           <hr />
           <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
@@ -49,10 +47,7 @@
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link text-white">
-                
-                
-              </a>
+              <a href="#" class="nav-link text-white"> </a>
             </li>
             <li>
               <a href="#" class="nav-link text-white">
@@ -80,16 +75,18 @@
             </li>
           </ul>
           <hr />
-          
         </div>
 
         <!-- Main Content -->
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
           <h2>Welcome to the Dashboard</h2>
           <!-- Content goes here -->
+          <%- include("forms/addChapter.ejs") %><hr>
+          <%- include("forms/addNote.ejs") %><hr>
+          <%- include("forms/addVideo.ejs") %><hr>
         </main>
       </div>
-    </div>
+    </div-->
     <!--bs popper.js-->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
