@@ -58,7 +58,7 @@
                 ><i class="fa-solid fa-user-tie"></i>&nbsp;Portfolio</a
               >
             </li>
-
+            
             <li class="nav-item spaced">
               <a
                 class="nav-link nav-text active testimonials"
@@ -67,7 +67,15 @@
                 ><i class="fa-regular fa-comments"></i>&nbsp;Testimonials</a
               >
             </li>
-
+            <li class="nav-item spaced">
+              <a
+                class="nav-link nav-text active contact"
+                aria-current="page"
+                href="#"
+              >
+                <i class="fa-solid fa-phone-volume"></i>&nbsp;Contact
+              </a>
+            </li>
             <li class="nav-item spaced">
               <a
                 class="nav-link nav-text active courses shining-element"
@@ -131,6 +139,13 @@
         .querySelector(".testimonials")
         .addEventListener("click", function () {
           window.location.href = "/testimonials";
+        });
+
+        // GET testimonials
+      document
+        .querySelector(".contact")
+        .addEventListener("click", function () {
+          window.location.href = "/contact";
         });
 
       // GET testimonials

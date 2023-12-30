@@ -255,10 +255,6 @@ footer{
   height: 100%;
 }
 
-.card{
-  align-items: center;
-}
-
 .card.new-card{
   background-color: rgba(0,0,0,0.01);
 }
