@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const testimonialSchema = new mongoose.Schema({
   name: String,
@@ -10,6 +10,6 @@ const testimonialSchema = new mongoose.Schema({
   }
 });
 
-const Testimonial = mongoose.model('Testimonial', testimonialSchema);
+export default mongoose.model('Testimonial', testimonialSchema);
 
-module.exports = Testimonial;
+

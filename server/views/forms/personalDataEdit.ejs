@@ -1,0 +1,44 @@
+<div class="container mt-5">
+    <h1 class="mb-4">Edit Educator Personal Data</h1>
+    <form action="/educator/<%= educatorId %>" method="POST">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" name="name" value="<%= educator.name %>" required>
+      </div>
+      <div class="mb-3">
+        <label for="designation" class="form-label">Designation</label>
+        <input type="text" class="form-control" id="designation" name="designation" value="<%= educator.designation %>">
+      </div>
+      <div class="mb-3">
+        <label for="address" class="form-label">Address</label>
+        <input type="text" class="form-control" id="address" name="address" value="<%= educator.address %>">
+      </div>
+      <div class="mb-3">
+        <label for="about" class="form-label">About</label>
+        <textarea class="form-control" id="about" name="about" rows="3"><%= educator.about %></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="skills" class="form-label">Skills (comma-separated)</label>
+        <input type="text" class="form-control" id="skills" name="skills" value="<%= educator.skills.join(', ') %>">
+      </div>
+      <div class="mb-3">
+        <label for="achievements" class="form-label">Achievements (comma-separated)</label>
+        <input type="text" class="form-control" id="achievements" name="achievements" value="<%= educator.achievements.join(', ') %>">
+      </div>
+      <div class="mb-3">
+        <label for="twitter" class="form-label">Twitter</label>
+        <input type="text" class="form-control" id="twitter" name="twitter" value="<%= educator.socialMediaHandles.twitter %>">
+      </div>
+      <div class="mb-3">
+        <label for="facebook" class="form-label">Facebook</label>
+        <input type="text" class="form-control" id="facebook" name="facebook" value="<%= educator.socialMediaHandles.facebook %>">
+      </div>
+      <div class="mb-3">
+        <label for="linkedin" class="form-label">LinkedIn</label>
+        <input type="text" class="form-control" id="linkedin" name="linkedin" value="<%= educator.socialMediaHandles.linkedin %>">
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+  </div>
+  
