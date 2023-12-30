@@ -238,3 +238,9 @@ footer{
 .check-testimonials{
     cursor: pointer;
 }
+
+.carousel-item{
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
