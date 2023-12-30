@@ -10,6 +10,8 @@ import ExpressError from './utils/ExpressError.js';
 import path from 'path';
 import ejsMate from 'ejs-mate';
 import methodOverride from 'method-override';
+import {createReview} from './controllers/ratingController.js';
+import Review from './models/ratingModel.js';
 //import {RecaptchaV2} from 'express-recaptcha';
 
 //define the server credentials
@@ -38,9 +40,20 @@ import notesRoutes from './routes/noteRoutes.js';
 import chapterRoutes from './routes/chapterRoutes.js';
 
 
-app.get('/', (req, res) => {
-    res.render("index.ejs");
-});
+app.get('/', async (req, res) => {
+    try {
+      // Fetch reviews from the database (This part depends on your actual code and database setup)
+      const reviews = await Review.find(); // Fetch reviews using Mongoose
+  
+      res.render('index', { reviews }); // Pass the reviews data to the index.ejs template
+    } catch (err) {
+      // Handle errors if any occurred during the fetching of reviews
+      console.log(err);
+      res.status(500).send('Error fetching reviews');
+    }
+  });
+
+app.post("/reviews",createReview);
 
 app.get('/portfolio',(req,res) => {
     res.render("portfolio.ejs");
@@ -49,6 +62,8 @@ app.get('/portfolio',(req,res) => {
 app.get('/testimonials',(req,res) => {
     res.render("testimonials.ejs");
 });
+
+app.post('/reviews',createReview);
 
 app.get('/courses',(req,res)=>{
     res.render("courses.ejs");
