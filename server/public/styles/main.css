@@ -112,8 +112,14 @@ footer{
     }
   }
   
-  footer {
+  footer{
     background: linear-gradient(90deg, rgba(131, 58, 180, 0.8), rgba(253, 29, 29, 0.7), rgba(252, 176, 69, 0.75));
+    background-size: 200% 200%;
+    overflow: auto;
+  }
+
+  .bg-achievements{
+    background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
     background-size: 200% 200%;
     overflow: auto;
   }
@@ -243,4 +249,16 @@ footer{
   justify-content: center;
   align-items: center;
   align-content: center;
+}
+
+.fix-height{
+  height: 100%;
+}
+
+.card{
+  align-items: center;
+}
+
+.card.new-card{
+  background-color: rgba(0,0,0,0.01);
 }
