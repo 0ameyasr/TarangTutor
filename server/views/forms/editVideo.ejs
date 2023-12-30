@@ -1,0 +1,21 @@
+<div class="container mt-5">
+    <h1 class="mb-4">Edit Video</h1>
+    <form action="/video/<%= videoId %>" method="POST">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" name="title" value="<%= video.title %>" required>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" id="description" name="description" rows="3"><%= video.description %></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="videoURL" class="form-label">Video URL</label>
+        <input type="text" class="form-control" id="videoURL" name="videoURL" value="<%= video.videoURL %>" required>
+      </div>
+      
+      
+      <button type="submit" class="btn btn-primary">Update Video</button>
+    </form>
+  </div>
+  

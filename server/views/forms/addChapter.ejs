@@ -1,0 +1,17 @@
+<div class="container mt-5">
+    <h1 class="mb-4">Add Chapter</h1>
+    <form action="/chapters" method="POST">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" name="title" required>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+      </div>
+      <!-- Other fields for chapter-related data can be added here -->
+      
+      <button type="submit" class="btn btn-primary">Add Chapter</button>
+    </form>
+  </div>
+  
