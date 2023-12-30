@@ -202,6 +202,7 @@ footer{
 }
 .new-link:hover{
     text-decoration: underline;
+    cursor: pointer;
 }
 .nav-link.new-footer-link{
     text-decoration: none;
@@ -257,4 +258,60 @@ footer{
 
 .card.new-card{
   background-color: rgba(0,0,0,0.01);
+}
+
+.test-1{
+  display:inline-block;
+  border-radius:15px;
+  height:28em;
+  width:30em;
+  padding-top:50px;
+  padding-left: 25px;
+  background-color: #210070;
+  color: #6892f5;
+}
+.test-2{
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.flex-container {
+  display: flex;
+  height: 600px;
+  justify-content: center;
+  align-items: center;
+}
+.test-4 {
+  display: flex;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 1095px) {
+  .test-1{
+    width: 100%;
+  }
+  .test-4{
+    width: 500%;
+  }
+  .test-2{
+      margin-top: 350px;
+  }
+}
+.test-3{
+  display: flex;
+  margin-top: 50px;
+  flex-direction: row;
+}
+.t1{
+  display: inline-block;
+  padding: 10px;
+}
+.test-11{
+  width: 80%;
+  height: 80%;
 }
