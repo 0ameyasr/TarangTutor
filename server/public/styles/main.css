@@ -235,3 +235,6 @@ footer{
     overflow-y: hidden;
 }
 
+.check-testimonials{
+    cursor: pointer;
+}
