@@ -13,7 +13,7 @@ import methodOverride from 'method-override';
 import { createReview } from './controllers/ratingController.js';
 import Review from './models/ratingModel.js';
 import { RecaptchaV2 } from 'express-recaptcha';
-
+import { MongoClient } from 'mongodb';
 
 //define the server credentials
 const app = express();
@@ -73,6 +73,15 @@ app.get('/contact', (req, res) => {
     res.render("contact.ejs");
 });
 
+MongoClient.connect(MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(client => {
+        console.log('Connected to MongoDB');
+        const db = client.db('TarangSir');
+        app.locals.db = db;
+    })
+    .catch(err => console.error('Error connecting to MongoDB', err));
+
+
 app.get('/admin', (req, res) => {
     const dat = {
         site_key: SITE_KEY,
@@ -82,13 +91,23 @@ app.get('/admin', (req, res) => {
 
 
 //google re-captcha and authentication of admin
-app.post('/auth', recaptcha.middleware.verify, (req, res) => {
+app.post('/auth', recaptcha.middleware.verify, async (req, res) => {
     const adminSession = req.cookies.adminSession;
     if (!req.recaptcha.error && adminSession === process.env.ADMIN_SESSION_SECRET) {
-        if (req.body["entered_pass"] === process.env.PASSKEY && req.body["entered_user"] === process.env.ADMIN) {
-            res.render('dashboard.ejs');
-        } else {
-            res.render("error.ejs");
+        try {
+            const adminCredentials = await app.locals.db.collection('admin_credentials').findOne({});
+            if (!adminCredentials) {
+                throw new Error('Admin credentials not found');
+            }
+
+            if (req.body.entered_pass === adminCredentials.passkey && req.body.entered_user === adminCredentials.user) {
+                res.render('dashboard.ejs');
+            } else {
+                res.render('error.ejs');
+            }
+        } catch (error) {
+            console.error('Error authenticating admin', error);
+            res.render('error.ejs');
         }
     } else {
         res.render("error.ejs");
@@ -128,3 +147,4 @@ app.use((err, req, res, next) => {
     res.status(statusCode).send(err.message);
     next();
 });
+

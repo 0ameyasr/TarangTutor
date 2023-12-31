@@ -19,7 +19,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles/admin.css" />
+    <link rel="stylesheet" href="styles/main.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -29,8 +29,8 @@
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <title>Tarang's Tutorials - Admin Portal</title>
   </head>
-  <body>
-    <div class="container-fluid col-xl-10 col-xxl-8 px-4 py-5 admin-body">
+  <body class="admin-body">
+    <div class="container-fluid col-xl-10 col-xxl-8 px-4 py-5 auth-portal">
       <div class="row align-items-center g-lg-5 py-5">
         <div class="col-lg-7 text-center text-lg-start">
           <h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">
@@ -55,7 +55,7 @@
                 placeholder="Username"
                 name="entered_user"
               />
-              <label for="floatingInput">Username</label>
+              <label for="floatingInput" class="dark-prompt-text">Username</label>
             </div>
             <div class="form-floating mb-3">
               <input
@@ -66,11 +66,11 @@
                 name="entered_pass"
                 required
               />
-              <label for="floatingPassword">Password</label>
+              <label for="floatingPassword" class="dark-prompt-text">Password</label>
             </div>
 
             <button
-              class="w-100 btn btn-lg btn-primary"
+              class="w-100 btn btn-lg btn-secondary"
               id="authenticateBtn"
               type="submit"
               disabled

@@ -1,12 +1,12 @@
 
-// document
-//   .getElementById("transition-bar")
-//   .setAttribute("id", "transition-bar-active");
-// document.body.style.overflowY = "hidden";
-// setTimeout(function () {
-//   document.getElementById("transition-bar-active").remove();
-//   document.body.style.overflowY = "auto";
-// }, 2000);
+document
+  .getElementById("transition-bar")
+  .setAttribute("id", "transition-bar-active");
+document.body.style.overflowY = "hidden";
+setTimeout(function () {
+  document.getElementById("transition-bar-active").remove();
+  document.body.style.overflowY = "auto";
+}, 2000);
 
 // GET index
 document.querySelector(".header-home").addEventListener("click", function () {
