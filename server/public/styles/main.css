@@ -209,13 +209,14 @@
   background: url('../images/load.gif');
   background-color: var(--primary-color);
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: 30% 55%;
+  background-position: 50% 50%;
   background-color: white;
   animation: loading 2s linear;
 }
 @keyframes loading {
   80% {
-      opacity: 1.0;
+      opacity: 0.9;
   }
   90%{
       opacity: 0.5;
@@ -225,3 +226,35 @@
   }
 }
 
+.review-tab{
+  background: var(--primary-color);
+}
+
+.row.rating-line{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 10px;
+}
+
+.card-title.review{
+  color:var(--accent-color);
+}
+
+*{
+  font-family: 'Poppins', sans-serif;
+}
+
+.admin-body{
+  background-image: url('/images/web.png');
+  background-repeat: repeat;
+}
+
+.auth-portal{
+  background-color: var(--primary-color);
+}
+
+.dark-prompt-text{
+  color: var(--secondary-color);
+}
