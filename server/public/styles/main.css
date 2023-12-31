@@ -225,3 +225,18 @@
   }
 }
 
+.review-tab{
+  background: var(--primary-color);
+}
+
+.row.rating-line{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 10px;
+}
+
+.card-title.review{
+  color:var(--accent-color);
+}
