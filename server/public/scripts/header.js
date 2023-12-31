@@ -9,6 +9,11 @@ setTimeout(function () {
 }, 2000);
 
 // GET index
+document.querySelector(".header-home-icon").addEventListener("click", function () {
+  window.location.href = "/";
+});
+
+// GET index
 document.querySelector(".header-home").addEventListener("click", function () {
   window.location.href = "/";
 });
