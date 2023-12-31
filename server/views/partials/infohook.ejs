@@ -1,58 +1,63 @@
-<div
-  class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary info-hook"
->
-  <div class="col-lg-6 px-0 smooth-bg">
-    <h1 class="display-4 fst-italic">Why students trust us</h1>
+<head>
+  <script src="/scripts/fetchTestimonials.js" defer></script>
+</head>
+<div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary info-hook">
+  <div class="col-lg-6 px-0">
+    <h1 class="display-4 text">Why students trust us</h1>
     <p class="lead my-3">
       See what our students have to say about their tutor who chiseled into them
       the strong foundation of physics so that they could excel in their exams!
     </p>
     <p class="lead mb-0">
-      <a class="text-body-emphasis fw-bold new-link check-testimonials"
-        >Testimonials...</a
-      >
+      <a class="text-body-emphasis fw-bold new-link check-testimonials">Testimonials...</a>
     </p>
   </div>
 </div>
-<div class="px-4 pt-5 my-5 text-center border-bottom">
-  <h1 class="display-4 fw-bold text-body-emphasis">
-    Where passion meets Physics
-  </h1>
-  <div class="col-lg-6 mx-auto">
-    <p class="lead mb-4">
-      <h5>Academic Journey:</h5> Tarang K. Bombale finished his complete 
-      schooling from Somalwar High School, Nagpur (2019) and is currently 
-      pursuing an integrated MSc in Mathematics from NIT Surat (2020-present). He has had 
-      a passion for physics which he has now carved into tutoring students 
-      online.
-      </p>
-      <p>
-      <h5>Teaching Philosophy:</h5> Tarang sir gives strong emphasis on resolving
-      doubts and makes sure his students retain clarity of the subject and its topics 
-      as they learn, also focusing on building for them a strong foundation.
-      </p>
-      <p>
-      <h5>Professional Background:</h5> Tarang sir worked as a JEE Physics faculty for 
-      IIT Gurukul, Surat coaching classes for 3 years (2020-2023) and presently tutors 
-      students online in Physics. Further, he is an associate HR at Edignite (Surat) an 
-      NGO - which works for the education of underprivileged children.
-    </p>
-  </div>
-  <div class="overflow-hidden">
-    <div class="container px-5">
-      <img
-        src="images/review_hero.png"
-        class="img-fluid border rounded-3 shadow-lg"
-        width="400"
-        height="300"
-      />
-      <br>
+<div class="container override-featurette px-4 py-5" id="hanging-icons">
+  <h2 class="pb-2 border-bottom">Bio</h2>
+  <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+    <div class="col d-flex align-items-start">
+      <div
+        class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+        <i class="fa-solid fa-graduation-cap"></i>
+      </div>
+      <div>
+        <h3 class="fs-2 text-body-emphasis">Academic Journey</h3>
+        <p>
+          Tarang K. Bombale finished his complete
+          schooling from Somalwar High School, Nagpur (2019) and is currently
+          pursuing an integrated MSc in Mathematics from NIT Surat (2020-present). He has had
+          a passion for physics which he has now carved into tutoring students
+          online.
+        </p>
+      </div>
+    </div>
+    <div class="col d-flex align-items-start">
+      <div
+        class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+        <i class="fa-solid fa-chalkboard-user"></i>
+      </div>
+      <div>
+        <h3 class="fs-2 text-body-emphasis">Teaching Philosophy</h3>
+        <p>Tarang sir gives strong emphasis on resolving
+          doubts and makes sure his students retain clarity of the subject and its topics
+          as they learn, also focusing on building for them a strong foundation.</p>
+
+      </div>
+    </div>
+    <div class="col d-flex align-items-start">
+      <div
+        class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+        <i class="fa-solid fa-user-tie"></i>
+      </div>
+      <div>
+        <h3 class="fs-2 text-body-emphasis">Professional Background</h3>
+        <p>Tarang sir worked as a JEE Physics faculty for
+          IIT Gurukul, Surat coaching classes for 3 years (2020-2023) and presently tutors
+          students online in Physics. Further, he is an associate HR at Edignite (Surat) an
+          NGO - which works for the education of underprivileged children.</p>
+
+      </div>
     </div>
   </div>
 </div>
-<script>
-    // GET testimonials
-    document.querySelector(".check-testimonials").addEventListener("click", function () {
-      window.location.href = "/testimonials";
-    });
-  </script>

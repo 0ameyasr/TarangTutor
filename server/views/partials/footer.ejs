@@ -1,65 +1,69 @@
-<footer
-  class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top smooth-bg"
->
-  <p class="col-md-4 mb-0 text-body-secondary" style="color: white;">&copy; <%= new Date().getFullYear()%> WebForge &bull; Tarang's Tutorials</p>
+<head>
+  <script src="/scripts/footer.js" defer></script>
+</head>
 
-  <ul class="nav col-md-4 justify-content-end">
-    <li class="nav-item">
-      <a class="nav-link new-footer-link text-body-secondary footer-home"
-        >Home</a
-      >
-    </li>
-    <li class="nav-item">
-      <a
-        class="nav-link new-footer-link px-2 text-body-secondary footer-portfolio"
-        >Portfolio</a
-      >
-    </li>
-    <li class="nav-item">
-      <a
-        class="nav-link new-footer-link px-2 text-body-secondary footer-testimonials"
-        >Testimonials</a
-      >
-    </li>
-    <li class="nav-item">
-      <a
-        class="nav-link new-footer-link px-2 text-body-secondary footer-courses"
-        >Courses</a
-      >
-    </li>
-    <li class="nav-item">
-      <a
-        class="nav-link new-footer-link px-2 text-body-secondary footer-contact"
-        >Contact</a
-      >
-    </li>
-  </ul>
-  <p><a class="new-footer-link" href="#"><i class="fa-solid fa-arrow-up"></i></a></p>
-</footer>
-<script>
-    // GET index
-    document.querySelector(".footer-home").addEventListener("click", function () {
-      window.location.href = "/";
-    });
-  
-    // GET portfolio
-    document.querySelector(".footer-portfolio").addEventListener("click", function () {
-      window.location.href = "/portfolio";
-    });
-  
-    // GET testimonials
-    document.querySelector(".footer-testimonials").addEventListener("click", function () {
-      window.location.href = "/testimonials";
-    });
-  
-    // GET courses
-    document.querySelector(".footer-courses").addEventListener("click", function () {
-      window.location.href = "/courses";
-    });
-  
-    // GET contact
-    document.querySelector(".footer-contact").addEventListener("click", function () {
-      window.location.href = "/contact";
-    });
-  </script>
-  
+<div class="container-fluid footer-container-fluid">
+  <footer class="py-3 my-4">
+    <ul class="nav justify-content-center pb-3 mb-3">
+      <li class="nav-item"><a class="nav-link footer-link px-2 text-body-secondary footer-home">Home</a></li>
+      <li class="nav-item"><a class="nav-link footer-link px-2 text-body-secondary footer-portfolio">Portfolio</a></li>
+      <li class="nav-item"><a class="nav-link footer-link px-2 text-body-secondary footer-testimonials">Testimonials</a>
+      </li>
+      <li class="nav-item"><a class="nav-link footer-link px-2 text-body-secondary footer-courses">Courses</a></li>
+      <li class="nav-item"><a class="nav-link footer-link px-2 text-body-secondary footer-contact"
+          data-bs-toggle="modal" data-bs-target="#staticBackdrop">Contact</a></li>
+      <li class="nav-item"><a id="toTop" href="#" class="nav-link footer-link icon px-2 text-body-secondary footer-contact">
+          <i class="fa-solid fa-up-long"></i></a>
+      </li>
+    </ul>
+    <p class="text-center text-body-secondary text">&copy; <%= new Date().getFullYear()%> WebForge &bull; Tarang's
+        Tutorials
+    </p>
+  </footer>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content override-style">
+      <div class="modal-header override-style">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Contact Details</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <ul class="d-grid gap-4 my-5 list-unstyled small">
+          <li class="d-flex gap-4">
+            <div>
+              <h4 class="mb-0"><i class="fa-solid fa-chalkboard-user"></i>&nbsp;Tarang K. Bombale</h4>
+            </div>
+          </li>
+          <li class="d-flex gap-4">
+            <div>
+              <h4 class="mb-0"><i class="fa-solid fa-phone-volume"></i>&nbsp;+91 76666 38042</h4>
+            </div>
+          </li>
+          <li class="d-flex gap-4">
+            <div>
+              <h4 class="mb-0"><a class="new-link icon" href="mailto:tarangbombale01@gmail.com"><i class="fa-brands fa-google"></i></a>&nbsp;Mail</a></h4>
+            </div>
+          </li>
+          <li class="d-flex gap-4">
+            <div>
+              <h4 class="mb-0"><a class="new-link icon" href="https://www.linkedin.com/in/tarang-bombale-4b1643244/"><i class="fa-brands fa-linkedin"></i></a>&nbsp;LinkedIn</h4>
+            </div>
+          </li>
+          <li class="d-flex gap-4">
+            <div>
+              <h4 class="mb-0"><a class="new-link icon" href="https://instagram.com/tarangbombale01"><i class="fa-brands fa-instagram"></i></a>&nbsp;Instagram</h4>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="modal-footer override-style">
+        <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
