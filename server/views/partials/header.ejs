@@ -1,157 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!--metadata-->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <!--metadata-->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!--stylesheets-->
-    <link rel="icon" href="images/emblem_white.png" />
-    <link rel="stylesheet" href="styles/main.css" />
-    <link rel="stylesheet" href="styles/rating.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <title>Tarang's Tutorials</title>
-  </head>
-  <body>
-    <div id="transition-bar"></div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid brand">
-        <a class="navbar-brand home" href="#">
-          <img src="images/emblem.png" width="93" height="95" />
-          <b> Tarang's Tutorials </b>
-        </a>
-        <button
-          class="navbar-toggler override"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item spaced">
-              <a
-                class="nav-link nav-text active portfolio"
-                aria-current="page"
-                href="#"
-                ><i class="fa-solid fa-user-tie"></i>&nbsp;Portfolio</a
-              >
-            </li>
-            
-            <li class="nav-item spaced">
-              <a
-                class="nav-link nav-text active testimonials"
-                aria-current="page"
-                href="#"
-                ><i class="fa-regular fa-comments"></i>&nbsp;Testimonials</a
-              >
-            </li>
-            <li class="nav-item spaced">
-              <a
-                class="nav-link nav-text active contact"
-                aria-current="page"
-                href="#"
-              >
-                <i class="fa-solid fa-phone-volume"></i>&nbsp;Contact
-              </a>
-            </li>
-            <li class="nav-item spaced">
-              <a
-                class="nav-link nav-text active courses shining-element"
-                aria-current="page"
-                href="#"
-              >
-                <i class="fa-solid fa-book-bookmark"></i>&nbsp;Courses
-              </a>
-            </li>
-          </ul>
-          <form class="d-flex">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search this site..."
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-success" type="submit">
-              <i
-                class="fa-solid fa-magnifying-glass"
-                style="font-size: 13px"
-              ></i>
-            </button>
-          </form>
-        </div>
-      </div>
-    </nav>
-    <!--bs popper.js-->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
-    <script>
-      AOS.init({ once: true });
-    </script>
-    <script>
-      document
-        .getElementById("transition-bar")
-        .setAttribute("id", "transition-bar-active");
-      document.body.style.overflowY = "hidden";
-      setTimeout(function () {
-        document.getElementById("transition-bar-active").remove();
-        document.body.style.overflowY = "auto";
-      }, 2000);
+  <!--stylesheets-->
+  <link rel="icon" href="images/emblem_white.png" />
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/rating.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link rel="script/js" href="scripts/fetchLinks.js">
+  </script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="/scripts/header.js" defer></script>
+  <script>
+    AOS.init({
+      once: true,
+    });
+  </script>
+  <title>Tarang's Tutorials</title>
+</head>
 
-      // GET index
-      document.querySelector(".home").addEventListener("click", function () {
-        window.location.href = "/";
-      });
+<!-- <div id="transition-bar"></div> -->
+<nav class="navbar navbar-color-override navbar-expand-lg">
+  <div class="container-fluid nav-container-fluid brand">
+    <a class="navbar-brand new-link header-home">
+      <img src="images/emblem.png" width="93" height="95" />
+      <b class="text"> Tarang's Tutorials </b>
+    </a>
+    <button class="navbar-toggler navbar-toggler-override" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon">
+        <i class="fas fa-bars" style="color: #fff; font-size: 28px"></i>
+      </span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav navbar-nav-override me-auto mb-2 mb-lg-0">
+        <li class="nav-item spaced">
+          <a class="nav-link nav-text header-portfolio"><i class="fa-solid fa-user-tie active"></i>&nbsp;Portfolio</a>
+        </li>
 
-      // GET portfolio
-      document
-        .querySelector(".portfolio")
-        .addEventListener("click", function () {
-          window.location.href = "/portfolio";
-        });
-
-      // GET testimonials
-      document
-        .querySelector(".testimonials")
-        .addEventListener("click", function () {
-          window.location.href = "/testimonials";
-        });
-
-        // GET testimonials
-      document
-        .querySelector(".contact")
-        .addEventListener("click", function () {
-          window.location.href = "/contact";
-        });
-
-      // GET testimonials
-      document.querySelector(".courses").addEventListener("click", function () {
-        window.location.href = "/courses";
-      });
-    </script>
-  </body>
-</html>
+        <li class="nav-item spaced">
+          <a class="nav-link nav-text header-testimonials active" aria-current="page"><i
+              class="fa-regular fa-comments"></i>&nbsp;Testimonials</a>
+        </li>
+        <li class="nav-item spaced">
+          <a class="nav-link nav-text header-courses active" aria-current="page">
+            <i class="fa-solid fa-book-bookmark"></i>&nbsp;Courses
+          </a>
+        </li>
+        <li class="nav-item"><a class="nav-link nav-text" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <i class="fa-solid fa-phone-volume"></i>&nbsp;Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!--bs popper.js-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
