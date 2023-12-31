@@ -4,44 +4,29 @@
     body{
         background-image: url('images/web.png');
         background-repeat: repeat;
-        
+    }
+    .info{
+      background-color: transparent;
+      color: white;
+    }
+    .card1{
+      margin-top: 10px;
+    }
+    .notes-link{
+      color: white;
+      text-decoration: none;
+    }
+    .notes-link{
+      color: white;
+      text-decoration: none;
+    }
+    .notes-link:hover{
+      color: #1072da;
+      text-decoration: none;
     }
 </style>
 <!--Include your partials here-->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Course Web Page</title>
 
-  <!-- Bootstrap CSS -->
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-  <style>
-    .info{
-        background-color: transparent;
-        color: white;
-    }
-    .card1{
-        margin-top: 10px;
-    }
-    .notes-link{
-        color: white;
-        text-decoration: none;
-    }
-    .notes-link{
-        color: white;
-        text-decoration: none;
-    }
-    .notes-link:hover{
-        color: #1072da;
-        text-decoration: none;
-    }
-  </style>
-</head>
-<body>
 
     <div class="container-fluid override-featurette card1">
         <div class="row">
@@ -138,13 +123,6 @@
         </div>
     </div>
 
-  <!-- Bootstrap JS and dependencies -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-</body>
-</html>
 
 <!--Conclude the page with a footer-->
 <%-include("partials/footer.ejs")%>
