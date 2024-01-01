@@ -58,9 +58,9 @@
               <i class="fa-solid fa-screwdriver-wrench"></i>&nbsp;Tools
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Update Personal Details</a></li>
-              <li><a class="dropdown-item" href="#">Update Videos</a></li>
-              <li><a class="dropdown-item" href="#">Update Notes</a></li>
+              <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#updateDetailsModal">Update Personal Details</a></li>
+              <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#updateVideoModal">Update Videos</a></li>
+              <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#updateNotesModal">Update Notes</a></li>
             </ul>
           </li>
           <li class="nav-item"><a class="nav-link nav-text" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -76,7 +76,7 @@
       <div class="col d-flex align-items-start">
         <div
           class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
-          <i class="fa-solid fa-graduation-cap"></i>
+          <i class="fa-solid fa-user-check"></i>
         </div>
         <div>
           <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Verified</h3>
@@ -159,9 +159,13 @@
       </div>
     </div>
   </div>
+  <br>
   <!--bs popper.js-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
 </body>
 <%-include('partials/contactmodal.ejs')%>
+<%-include('partials/updateVideo.ejs')%>
+<%-include('partials/updateNotes.ejs')%>
+<%-include('partials/updatePersonalDetails.ejs')%>
