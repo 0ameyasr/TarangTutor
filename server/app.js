@@ -181,7 +181,7 @@ app.post('/update-contact/:id', async (req, res) => {
         );
 
         if (result.modifiedCount === 1) {
-            res.send("success");
+            res.render("success.ejs");
         } else {
             res.status(404).send('Contact details not found');
         }
