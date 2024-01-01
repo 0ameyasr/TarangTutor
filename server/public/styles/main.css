@@ -10,11 +10,26 @@
   font-family: 'Poppins', sans-serif;
   color: var(--text-color);
 }
+@keyframes smooth-background {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 50% 100%;
+  }
+}
 
+.admin-body{
+  background-image: url('/images/web.png');
+  background-repeat: repeat;
+  animation: smooth-background 100s infinite;
+}
 .index-body{
   background-image: url('../images/web.png');
   background-repeat: repeat;
+  animation: smooth-background 100s infinite;
 }
+
 .new-link {
   color: var(--text-color);
 }
@@ -156,15 +171,6 @@
   color: var(--text-color);
 }
 
-.new-link.icon {
-  color: var(--text-color);
-}
-
-.new-link.icon:hover,
-.new-link.icon:active {
-  color: var(--accent-color);
-}
-
 .icons {
   display: flex;
   flex-direction: row;
@@ -246,10 +252,6 @@
   font-family: 'Poppins', sans-serif;
 }
 
-.admin-body{
-  background-image: url('/images/web.png');
-  background-repeat: repeat;
-}
 
 .auth-portal{
   background-color: var(--primary-color);
@@ -257,4 +259,37 @@
 
 .dark-prompt-text{
   color: var(--secondary-color);
+}
+
+.sidebar{
+  background-color: var(--primary-color);
+  height: 100%;
+}
+
+.instructions{
+  background-color: var(--secondary-color);
+}
+
+body{
+  background-image: url('images/web.png');
+  background-repeat: repeat;
+}
+.info{
+background-color: transparent;
+color: white;
+}
+.card1{
+margin-top: 10px;
+}
+.notes-link{
+color: white;
+text-decoration: none;
+}
+.notes-link{
+color: white;
+text-decoration: none;
+}
+.notes-link:hover{
+color: #1072da;
+text-decoration: none;
 }
