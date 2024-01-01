@@ -14,6 +14,7 @@ import { createReview } from './controllers/ratingController.js';
 import Review from './models/ratingModel.js';
 import { RecaptchaV2 } from 'express-recaptcha';
 import { MongoClient } from 'mongodb';
+import { ObjectId } from 'mongodb';
 
 //define the server credentials
 const app = express();
@@ -42,37 +43,6 @@ import notesRoutes from './routes/noteRoutes.js';
 import chapterRoutes from './routes/chapterRoutes.js';
 import cookieParser from 'cookie-parser';
 
-
-app.get('/', (req, res) => {
-    res.render("index.ejs");
-});
-
-app.post("/reviews", createReview);
-
-app.get('/portfolio', (req, res) => {
-    res.render("portfolio.ejs");
-});
-
-app.get('/testimonials', async (req, res) => {
-    try {
-        const reviews = await Review.find();
-        res.render('testimonials', { reviews });
-    } catch (err) {
-        console.log(err);
-        res.status(500).send('Error fetching reviews');
-    }
-});
-
-app.post('/reviews', createReview);
-
-app.get('/courses', (req, res) => {
-    res.render("courses.ejs");
-});
-
-app.get('/contact', (req, res) => {
-    res.render("contact.ejs");
-});
-
 MongoClient.connect(MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(client => {
         console.log('Connected to MongoDB');
@@ -81,8 +51,76 @@ MongoClient.connect(MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true
     })
     .catch(err => console.error('Error connecting to MongoDB', err));
 
+app.get('/', async (req, res) => {
+    const contactData = await app.locals.db.collection('contact_details').findOne({});
+    let details = {
+        admin_name: contactData.name,
+        admin_mob: contactData.mob,
+        admin_email: contactData.mail,
+        admin_linkedin: contactData.linkedin,
+        admin_ig: contactData.instagram,
+    };
+    res.render("index.ejs", details);
+});
 
-app.get('/admin', (req, res) => {
+app.get('/portfolio', async (req, res) => {
+    const contactData = await app.locals.db.collection('contact_details').findOne({});
+    let details = {
+        admin_name: contactData.name,
+        admin_mob: contactData.mob,
+        admin_email: contactData.mail,
+        admin_linkedin: contactData.linkedin,
+        admin_ig: contactData.instagram,
+    };
+    res.render("portfolio.ejs", details);
+});
+
+app.get('/testimonials', async (req, res) => {
+    try {
+        const reviews = await Review.find();
+        const contactData = await app.locals.db.collection('contact_details').findOne({});
+        
+        let details = {
+            admin_name: contactData.name,
+            admin_mob: contactData.mob,
+            admin_email: contactData.mail,
+            admin_linkedin: contactData.linkedin,
+            admin_ig: contactData.instagram,
+            reviews: reviews,
+        };
+
+        res.render('testimonials', details);
+    } catch (err) {
+        console.log(err);
+        res.status(500).send('Error fetching reviews and contact details');
+    }
+});
+
+
+app.post('/reviews', createReview);
+
+app.get('/courses', async (req, res) => {
+    const contactData = await app.locals.db.collection('contact_details').findOne({});
+    let details = {
+        admin_name : contactData.name,
+        admin_mob : contactData.mob,
+        admin_email : contactData.mail,
+        admin_linkedin : contactData.linkedin,
+        admin_ig : contactData.instagram,
+    };
+    res.render("courses.ejs",details);
+});
+
+
+app.get('/admin', async (req, res) => {
+    const contactData = await app.locals.db.collection('contact_details').findOne({});
+    let details = {
+        admin_name : contactData.name,
+        admin_mob : contactData.mob,
+        admin_email : contactData.mail,
+        admin_linkedin : contactData.linkedin,
+        admin_ig : contactData.instagram,
+    };
     const dat = {
         site_key: SITE_KEY,
     };
@@ -93,6 +131,15 @@ app.get('/admin', (req, res) => {
 //google re-captcha and authentication of admin
 app.post('/auth', recaptcha.middleware.verify, async (req, res) => {
     const adminSession = req.cookies.adminSession;
+    const contactData = await app.locals.db.collection('contact_details').findOne({});
+    let details = {
+        admin_id : contactData._id,
+        admin_name : contactData.name,
+        admin_mob : contactData.mob,
+        admin_email : contactData.mail,
+        admin_linkedin : contactData.linkedin,
+        admin_ig : contactData.instagram,
+    };
     if (!req.recaptcha.error && adminSession === process.env.ADMIN_SESSION_SECRET) {
         try {
             const adminCredentials = await app.locals.db.collection('admin_credentials').findOne({});
@@ -101,7 +148,7 @@ app.post('/auth', recaptcha.middleware.verify, async (req, res) => {
             }
 
             if (req.body.entered_pass === adminCredentials.passkey && req.body.entered_user === adminCredentials.user) {
-                res.render('dashboard.ejs');
+                res.render('dashboard.ejs',details);
             } else {
                 res.render('error.ejs');
             }
@@ -114,10 +161,36 @@ app.post('/auth', recaptcha.middleware.verify, async (req, res) => {
     }
 });
 
+//handling admin update for the personal details
+app.post('/update-contact/:id', async (req, res) => {
+    try {
+        const { name, mob, mail, linkedin, instagram } = req.body;
+        const contactDetailsId = req.params.id;
+        const contactDetailsCollection = app.locals.db.collection('contact_details');
 
-app.get('/demos', (req, res) => {
-    res.render("demos.ejs");
-})
+        const updateFields = {};
+        if (name) updateFields.name = name;
+        if (mob) updateFields.mob = mob;
+        if (mail) updateFields.mail = mail;
+        if (linkedin) updateFields.linkedin = linkedin;
+        if (instagram) updateFields.instagram = instagram;
+
+        const result = await contactDetailsCollection.updateOne(
+            { _id: new ObjectId(contactDetailsId) },
+            { $set: updateFields }
+        );
+
+        if (result.modifiedCount === 1) {
+            res.send("success");
+        } else {
+            res.status(404).send('Contact details not found');
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error updating contact details');
+    }
+});
+
 
 
 //created middleware to find related route if request comes

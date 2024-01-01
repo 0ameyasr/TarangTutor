@@ -293,3 +293,58 @@ text-decoration: none;
 color: #1072da;
 text-decoration: none;
 }
+
+.demo-frame{
+  display: flex;
+  flex-direction: column;
+  gap:5px;
+  flex-wrap: wrap; 
+}
+
+.download-notes{
+  background-color: rgb(0,0,0);
+  color:var(--text-color);
+  border: 1px solid white;
+  border-radius: 0.25rem;
+}
+.download-notes:hover{
+  background-color: var(--secondary-color);
+}
+/*stylise the back to top button*/
+#toTop {
+  display: block; 
+  position: fixed;
+  height: 50px;
+  width: 50px;
+  bottom: 20px; 
+  right: 30px; 
+  z-index: 100; 
+  border: 2px solid white;
+  outline: none;
+  background-color: rgba(0,0,0,1);
+  color: white; 
+  cursor: pointer; 
+  padding: 10px; 
+  border-radius: 0px; 
+  text-decoration: none; 
+  text-align: center;
+}
+#toTop:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+  border:5px solid #ffd700;
+  animation: bounce 1s linear infinite;
+}
+@keyframes bounce{
+  0%{
+      transform: translateY(+2%);
+  }
+  25%{
+      transform: translateY(-1%);
+  }
+  75%{
+      transform: translateY(-1%);
+  }
+  100%{
+      transform: translateY(+2%);
+  }
+}
