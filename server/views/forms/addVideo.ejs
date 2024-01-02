@@ -1,6 +1,6 @@
 <div class="container mt-5">
     <h1 class="mb-4">Add Video</h1>
-    <form action="/video/add" method="POST">
+    <form action="/add-video" method="POST" validate>
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
         <input type="text" class="form-control" id="title" name="title" required>
@@ -10,10 +10,15 @@
         <textarea class="form-control" id="description" name="description" rows="3"></textarea>
       </div>
       <div class="mb-3">
-        <label for="videoURL" class="form-label">Video URL</label>
-        <input type="text" class="form-control" id="videoURL" name="videoURL" required>
+        <label for="url" class="form-label">Video URL</label>
+        <input type="text" class="form-control" id="url" name="url" required>
       </div>
-      <button type="submit" class="btn btn-primary">Add Video</button>
+      <div class="mb-3">
+        <label for="duration" class="form-label">Duration</label>
+        <input type="text" class="form-control" id="duration" name="duration" required>
+      </div>
+      <button type="submit" class="btn btn-primary" id="add-video" disabled>Add</button>
     </form>
+    <button class="btn btn-danger" onclick="document.getElementById('add-video').disabled=false">Confirm</button>
   </div>
   

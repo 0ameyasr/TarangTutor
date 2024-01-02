@@ -1,25 +1,16 @@
 <div class="container mt-5">
-    <form action="/update-contact/<%=admin_id%>" method="POST">
-        <div class="mb-3">
+    <form action="/update-contact/<%=admin_id%>" method="POST" validate>
             <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="<%=admin_name%>">
-        </div>
-        <div class="mb-3">
+            <input type="text" class="form-control" id="name" name="name" placeholder="<%=admin_name%>" required>
             <label for="mobile" class="form-label">Mobile</label>
-            <input type="text" class="form-control" id="mob" name="mob" placeholder="<%=admin_mob%>">
-        </div>
-        <div class="mb-3">
+            <input type="text" class="form-control" id="mob" name="mob" placeholder="<%=admin_mob%>" required>
             <label for="gmail" class="form-label">Gmail</label>
-            <input type="text" class="form-control" id="mail" name="mail" placeholder="<%=admin_email%>">
-        </div>
-        <div class="mb-3">
+            <input type="text" class="form-control" id="mail" name="mail" placeholder="<%=admin_email%>" required>
             <label for="linkedin" class="form-label">LinkedIn</label>
-            <textarea class="form-control" id="linkedin" name="linkedin" placeholder="<%=admin_linkedin%>"></textarea>
-        </div>
-        <div class="mb-3">
+            <textarea class="form-control" id="linkedin" name="linkedin" placeholder="<%=admin_linkedin%>" required></textarea>
             <label for="instagram" class="form-label">Instagram</label>
-            <input type="text" class="form-control" id="instagram" name="instagram" placeholder="<%=admin_ig%>">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+            <input type="text" class="form-control" id="instagram" name="instagram" placeholder="<%=admin_ig%>" required><br>
+            <button type="submit" class="btn btn-primary" id="edit-details" disabled>Submit</button>
+    </form><br>
+    <button class="btn btn-danger" onclick="document.getElementById('edit-details').disabled=false">Confirm</button>
 </div>

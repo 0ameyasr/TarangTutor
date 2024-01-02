@@ -1,4 +1,4 @@
-:root {
+:root{
   --primary-color: #222831;
   --secondary-color: #393E46;
   --accent-color: #00ADB5;
@@ -6,9 +6,12 @@
   --web-bg-color: #E1E9F5;
 }
 
-* {
+*:not(.exclude){
   font-family: 'Poppins', sans-serif;
   color: var(--text-color);
+}
+a:hover{
+  cursor: pointer;
 }
 @keyframes smooth-background {
   0% {
@@ -105,6 +108,10 @@
 
 .special-font {
   color: var(--accent-color);
+}
+
+.special-font-tab{
+  color: var(--primary-color);
 }
 
 .informatics-pane {
@@ -222,10 +229,7 @@
 }
 @keyframes loading {
   80% {
-      opacity: 0.9;
-  }
-  90%{
-      opacity: 0.5;
+      opacity: 1.0;
   }
   100%{
       opacity: 0.0;
@@ -246,6 +250,9 @@
 
 .card-title.review{
   color:var(--accent-color);
+}
+.review{
+  color:var(--secondary-color);
 }
 
 *{
@@ -278,7 +285,7 @@ body{
 background-color: transparent;
 color: white;
 }
-.card1{
+.card-new{
 margin-top: 10px;
 }
 .notes-link{
@@ -366,4 +373,28 @@ text-decoration: none;
 
 .vibrant{
   animation: color-change 5s infinite;
+}
+
+.accordion-body{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+
+}
+
+.fa-icon{
+  color:var(--primary-color);
+}
+
+.symbol{
+  color:var(--accent-color);
+}
+
+.icon-link{
+  text-decoration: none;
+  color: var(--accent-color);
 }

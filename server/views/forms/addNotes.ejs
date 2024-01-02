@@ -1,0 +1,22 @@
+
+
+<div class="container mt-5">
+    <h1 class="mb-4">Add Notes</h1>
+    <form action="/add-notes" method="POST" validate>
+      <div class="mb-3">
+        <label for="topic" class="form-label">Topic</label>
+        <input type="text" class="form-control" id="topic" name="topic" required>
+      </div>
+      <div class="mb-3">
+        <label for="course" class="form-label">For (Course)</label>
+        <textarea class="form-control" id="course" name="course" rows="3"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="url" class="form-label">Notes URL</label>
+        <input type="text" class="form-control" id="url" name="url" required>
+      </div>
+      <button type="submit" class="btn btn-primary" id="add-notes" disabled>Add</button>
+    </form><br>
+    <button class="btn btn-danger" onclick="document.getElementById('add-notes').disabled=false">Confirm</button>
+  </div>
+  

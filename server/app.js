@@ -101,12 +101,16 @@ app.post('/reviews', createReview);
 
 app.get('/courses', async (req, res) => {
     const contactData = await app.locals.db.collection('contact_details').findOne({});
+    const videos = await app.locals.db.collection('videos').find().toArray();
+    const notes = await app.locals.db.collection('notes').find().toArray();
     let details = {
         admin_name : contactData.name,
         admin_mob : contactData.mob,
         admin_email : contactData.mail,
         admin_linkedin : contactData.linkedin,
         admin_ig : contactData.instagram,
+        videos:videos,
+        notes:notes,
     };
     res.render("courses.ejs",details);
 });
@@ -132,6 +136,7 @@ app.get('/admin', async (req, res) => {
 app.post('/auth', recaptcha.middleware.verify, async (req, res) => {
     const adminSession = req.cookies.adminSession;
     const contactData = await app.locals.db.collection('contact_details').findOne({});
+    const videos = await app.locals.db.collection('videos').find().toArray();
     let details = {
         admin_id : contactData._id,
         admin_name : contactData.name,
@@ -139,6 +144,7 @@ app.post('/auth', recaptcha.middleware.verify, async (req, res) => {
         admin_email : contactData.mail,
         admin_linkedin : contactData.linkedin,
         admin_ig : contactData.instagram,
+        videos: videos,
     };
     if (!req.recaptcha.error && adminSession === process.env.ADMIN_SESSION_SECRET) {
         try {
@@ -183,15 +189,88 @@ app.post('/update-contact/:id', async (req, res) => {
         if (result.modifiedCount === 1) {
             res.render("success.ejs");
         } else {
-            res.status(404).send('Contact details not found');
+            res.status(404).render('commiterror.ejs');
         }
     } catch (error) {
         console.error(error);
-        res.status(500).send('Error updating contact details');
+        res.status(500).render('commiterror.ejs');
     }
 });
 
+app.post('/add-video',async(req,res)=>{
+    try{
+        const {title, description,url,duration} = req.body;
+        app.locals.db.collection('videos').insertOne(
+            {
+                title: title,
+                description: description,
+                url: url,
+                duration:duration,
+            }
+        );
+        res.status(200).render("success.ejs");
+    } catch (error)
+    {
+        console.error(error);
+        res.status(500).send("oops!");
+    }
+});
 
+app.post('/add-notes',async(req,res)=>{
+    try{
+        const {topic,course,url} = req.body;
+        app.locals.db.collection('notes').insertOne(
+            {
+                topic: topic,
+                course: course,
+                url: url,
+            }
+        );
+        res.status(200).render("success.ejs");
+    } catch (error)
+    {
+        console.error(error);
+        res.status(500).send("oops!");
+    }
+});
+
+app.post('/delete-video', async (req, res) => {
+    try {
+        const { url } = req.body;
+        const videoId = req.params.id;
+        const result = await app.locals.db.collection('videos').deleteOne(
+            {url: url}
+        );
+
+        if (result.deletedCount === 1) {
+            res.render("success.ejs");
+        } else {
+            res.status(404).render('commiterror.ejs');
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).render('commiterror.ejs');
+    }
+});
+
+app.post('/delete-notes', async (req, res) => {
+    try {
+        const { url } = req.body;
+        const videoId = req.params.id;
+        const result = await app.locals.db.collection('notes').deleteOne(
+            {url: url}
+        );
+
+        if (result.deletedCount === 1) {
+            res.render("success.ejs");
+        } else {
+            res.status(404).render('commiterror.ejs');
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).render('commiterror.ejs');
+    }
+});
 
 //created middleware to find related route if request comes
 app.use('/educator', educatorRoutes);

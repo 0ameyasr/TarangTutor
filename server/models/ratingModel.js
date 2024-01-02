@@ -7,8 +7,6 @@ const reviewSchema = new Schema({
     type: Number,
     min: 1,
     max: 5,
-
-    
     },
     createdAt: {
     type: Date,
@@ -18,5 +16,10 @@ const reviewSchema = new Schema({
         type:String,
         required: true,
     },
+    mail:{
+        type:String,
+        unique:true,
+        lowercase: true,
+    }
     });
 export default mongoose.model("Review", reviewSchema);

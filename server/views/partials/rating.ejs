@@ -1,68 +1,75 @@
 <br>
-<div class="container-fluid review-tab p-3">
-  <form action="/reviews" method="POST" novalidate class="needs-validation">
-    <div class="mb-3 mt-3 rating-content">
-      <h3><label for="rating" class="form-label">Rating</label></h3>
-      <fieldset class="starability-slot">
-        <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked
-          aria-label="No rating." />
-
-        <input type="radio" id="first-rate1" name="rating" value="1" />
-        <label for="first-rate1" title="Terrible">1 star</label>
-        <input type="radio" id="first-rate2" name="rating" value="2" />
-        <label for="first-rate2" title="Not good">2 stars</label>
-        <input type="radio" id="first-rate3" name="rating" value="3" />
-        <label for="first-rate3" title="Average">3 stars</label>
-        <input type="radio" id="first-rate4" name="rating" value="4" />
-        <label for="first-rate4" title="Very good">4 stars</label>
-        <input type="radio" id="first-rate5" name="rating" value="5" />
-        <label for="first-rate5" title="Amazing">5 stars</label>
-      </fieldset>
-      <div class="mb-3 mt-3">
-        <label for="author" class="form-label">Name</label>
-        <input type="text" name="author" id="author" class="form-control" required />
-        <div class="invalid-feedback">Please Enter a Name</div>
-      </div>
-    </div>
-    <div class="mb-3 mt-3">
-      <label for="comment" class="form-label">Comments</label>
-      <textarea name="comment" id="comment" cols="20" rows="5" class="form-control" required></textarea>
-      <div class="invalid-feedback">please add comment</div>
-    </div>
-
-    <button class="btn btn-outline-light">Submit</button>
-  </form>
-  <p><b>All Reviews</b></p>
-  <div class="row rating-line">
-    <% for (let i=0; i < reviews.length; i++) { %>
-      <div class="card line-border border-light shadow-sm d-flex w-50 h-50 p-0">
-        <div class="card-body">
-          <h5 class="card-title review">
-            <%= reviews[i].author %>
-          </h5>
-          <p class="card-text info" style="color:var(--primary-color)">
-            <%= reviews[i].comment %>
-          </p>
-          <p class="starability-result card-text" data-rating="<%= reviews[i].rating %>"></p>
+<script src="/scripts/observeRating.js" defer></script>
+<% function formatDOC(createdDate) { const dateObj=new Date(createdDate); if (!isNaN(dateObj.getTime())) { const
+  day=dateObj.getDate(); const month=dateObj.toLocaleString('default', { month: 'short' }); const
+  year=dateObj.getFullYear().toString(); return `${day} ${month} ${year}`; } return createdDate; } %>
+  <div class="container w-80 review-tab p-3">
+    <form action="/reviews" method="POST" validate class="needs-validation">
+      <div class="mb-3 mt-3 rating-content">
+        <h3><label for="rating" class="form-label">Rating</label></h3>
+        <fieldset class="starability-slot">
+          <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked
+            aria-label="No rating." />
+          <input type="radio" id="first-rate1" name="rating" value="1" />
+          <label for="first-rate1" title="Terrible">1 star</label>
+          <input type="radio" id="first-rate2" name="rating" value="2" />
+          <label for="first-rate2" title="Not good">2 stars</label>
+          <input type="radio" id="first-rate3" name="rating" value="3" />
+          <label for="first-rate3" title="Average">3 stars</label>
+          <input type="radio" id="first-rate4" name="rating" value="4" />
+          <label for="first-rate4" title="Very good">4 stars</label>
+          <input type="radio" id="first-rate5" name="rating" value="5" />
+          <label for="first-rate5" title="Amazing">5 stars</label>
+        </fieldset>
+        <div class="mb-3 mt-3">
+          <label for="author" class="form-label">Name</label>
+          <input type="text" name="author" id="author" class="form-control" required />
+          <div class="invalid-feedback">Please Enter a Name</div>
         </div>
       </div>
-      <% } %>
-  </div>
-</div>
-<!-- <div class="card line-border border-light shadow-sm" data-aos="flip-right" data-aos-offset="50"
-  data-aos-easing="ease-in-back" data-aos-anchor-placement="center-bottom">
-  <img src="images/10th_cbse_physics.png">
-  <div class="card-body">
-    <p class="card-text info" style="color:var(--primary-color)">
-      A course suitable for all Class 10 CBSE aspirants who need to get a solid
-      hold on the subject. Since this becomes the basis for more advanced learning,
-      it is recommended students first build strong fundamentals.
-    </p>
-    <div class="d-flex justify-content-center align-items-center">
-      <div class="btn-group">
-        <button type="button" class="btn btn-sm btn-outline-dark">View</button>
+      <div class="mb-3 mt-3">
+        <label for="comment" class="form-label">Comments</label>
+        <textarea name="comment" id="comment" cols="20" rows="5" class="form-control" required></textarea>
+        <div class="invalid-feedback">Please add a comment!</div>
       </div>
-      <small class="text-body-secondary"></small>
+      <div class="mb-3 mt-3">
+        <label for="mail" class="form-label">Email</label>
+        <input type="text" name="mail" id="mail" class="form-control" required />
+        <div class="invalid-feedback">Please Enter a valid Email</div>
+      </div>
+      <button id="rating-commit" type="submit" class="btn btn-outline-light" disabled>Submit</button>
+    </form>
+    <div class="row rating-line">
+      <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne"
+              style="background-color: var(--accent-color);">
+              All Reviews (<%=reviews.length%>)
+            </button>
+          </h2>
+          <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+              <% for (let i=0; i < reviews.length; i++) { %>
+                <div class="card line-border border-light shadow-sm d-flex w-50 h-50 p-0">
+                  <div class="card-body">
+                    <h5 class="card-title review">
+                      <%= reviews[i].author %>
+                    </h5>
+                    <h6 class="review">
+                      <%= formatDOC(reviews[i].createdAt) %>
+                    </h6>
+                    <p class="card-text info" style="color:var(--primary-color)">
+                      <%= reviews[i].comment %>
+                    </p>
+                    <p class="starability-result card-text" data-rating="<%= reviews[i].rating %>"></p>
+                  </div>
+                </div>
+                <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div> -->

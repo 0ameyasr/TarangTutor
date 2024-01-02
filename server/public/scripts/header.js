@@ -1,11 +1,12 @@
 
-document
-  .getElementById("transition-bar")
-  .setAttribute("id", "transition-bar-active");
+document.getElementById("transition-bar").setAttribute("id", "transition-bar-active");
 document.body.style.overflowY = "hidden";
+document.getElementById("toTop").style.display = "none";
+
 setTimeout(function () {
   document.getElementById("transition-bar-active").remove();
   document.body.style.overflowY = "auto";
+  document.getElementById("toTop").style.display = "block";
 }, 2000);
 
 // GET index

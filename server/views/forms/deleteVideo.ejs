@@ -1,0 +1,11 @@
+<div class="container mt-5">
+    <h1 class="mb-4">Delete a Video</h1>
+    <form action="/delete-video" method="POST" validate>
+        <div class="mb-3">
+            <label for="url" class="form-label">URL</label>
+            <input type="text" class="form-control" id="url" name="url" required>
+        </div>
+        <button type="submit" class="btn btn-primary" id="delete-video" disabled>Delete</button>
+    </form>
+    <button class="btn btn-danger" onclick="document.getElementById('delete-video').disabled=false">Confirm</button>
+</div>
