@@ -1,15 +1,15 @@
 <div class="container mt-5">
     <form action="/update-contact/<%=admin_id%>" method="POST" validate>
             <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="<%=admin_name%>" required>
+            <input type="text" class="form-control" id="name" name="name" placeholder="<%=admin_name%>">
             <label for="mobile" class="form-label">Mobile</label>
-            <input type="text" class="form-control" id="mob" name="mob" placeholder="<%=admin_mob%>" required>
+            <input type="text" class="form-control" id="mob" name="mob" placeholder="<%=admin_mob%>">
             <label for="gmail" class="form-label">Gmail</label>
-            <input type="text" class="form-control" id="mail" name="mail" placeholder="<%=admin_email%>" required>
+            <input type="text" class="form-control" id="mail" name="mail" placeholder="<%=admin_email%>">
             <label for="linkedin" class="form-label">LinkedIn</label>
-            <textarea class="form-control" id="linkedin" name="linkedin" placeholder="<%=admin_linkedin%>" required></textarea>
+            <textarea class="form-control" id="linkedin" name="linkedin" placeholder="<%=admin_linkedin%>"></textarea>
             <label for="instagram" class="form-label">Instagram</label>
-            <input type="text" class="form-control" id="instagram" name="instagram" placeholder="<%=admin_ig%>" required><br>
+            <input type="text" class="form-control" id="instagram" name="instagram" placeholder="<%=admin_ig%>"><br>
             <button type="submit" class="btn btn-primary" id="edit-details" disabled>Submit</button>
     </form><br>
     <button class="btn btn-danger" onclick="document.getElementById('edit-details').disabled=false">Confirm</button>

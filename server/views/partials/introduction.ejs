@@ -1,60 +1,44 @@
-
-<br><br><div class="container-fluid bg-dark-seethrough">
-  <div class="p-1 mb-4 bg-body-tertiary container-txt">
-    <div class="container-fluid py-5">
-      <h1 class="display-5 fw-bold text-center font-dark">
-        Level up your <span class="special-font">Physics</span>
-        <i class="fa-solid fa-arrow-trend-up vibrant"></i>
-      </h1>
-      <center>
-        <p class="col-md-8 fs-4 info text-center">
-          Embark on a physics odyssey with Tarang Bombale, your guide to
-          mastering Physics. Elevate your physics journey with
-          <b>Tarang's Tutorials</b> where curiosity meets accomplishment!
-        </p>
-      </center>
-    </div>
-  </div>
-
-  <div class="row align-items-md-stretch">
-    <div
-      class="col-md-6"
-      data-aos="fade-zoom-in"
-      data-aos-offset="50"
-      data-aos-easing="ease-in-back"
-      data-aos-anchor-placement="center-bottom"
-    >
-      <div class="h-100 p-1 text-bg-dark fs-5">
-        <h2 class="font-dark">From 11<sup>th</sup> to JEE</h2>
-        <p class="info">
-          Not only do we strengthen your fundamentals on the 10+2 level, but we
-          also prepare you for your competitive exams!
-        </p>
-      </div>
-    </div>
-    <div
-      class="col-md-6"
-      data-aos="fade-zoom-in"
-      data-aos-offset="50"
-      data-aos-easing="ease-in-back"
-      data-aos-anchor-placement="center-bottom"
-    >
-      <div class="h-100 p-2 bg-body-tertiary border-light">
-        <h2>Get a free Demo</h2>
-        <p class="info">
-          Have a look at our demo notes and videos on various topics for a 
-          better insight into our teaching strategy. 
+<div id="carouselExampleFade" class="carousel slide carousel-fade">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <video class="d-block w-100" autoplay muted loop>
+        <source src="images/introduction.mp4" type="video/mp4">
+      </video>
+      <div class="carousel-caption d-none d-md-block overcarousel">
+        <h1>Level up your <span class="special-font">Physics</span> <i class="fa-solid fa-arrow-trend-up vibrant"></i>
+        </h1>
+        <p>
+          <center>
+            <p class="col-md-8 fs-4 info text-center">
+              Elevate your physics journey with
+              <b>Tarang's Tutorials</b> where curiosity meets accomplishment!
+            </p>
+          </center>
         </p>
         <center>
-          <button class="btn btn-outline-light demos" type="button">
-            Let's Go
-          </button>
+          <button class="demos btn-primary fs-3"><i
+              class="fa-solid fa-video"></i>&nbsp;Get a Free Demo</button>
         </center>
       </div>
     </div>
-  </div><br><br>
-</div><br><br>
-
+  </div>
+</div>
+<div class="container-fluid d-md-none p-3" style="background-color: var(--primary-color);">
+  <center><h1>Level up your <span class="special-font">Physics</span> <i class="fa-solid fa-arrow-trend-up vibrant"></i></h1></center>
+  <p>
+    <center>
+      <p class="col-md-8 fs-4 info text-center">
+        Elevate your physics journey with
+        <b>Tarang's Tutorials</b> where curiosity meets accomplishment!
+      </p>
+    </center>
+  </p>
+  <center>
+    <a class="btn btn-outline-light demos fs-3" style="color: var(--text-color);" download><i
+        class="fa-solid fa-video"></i>&nbsp;Get a Free Demo</a>
+  </center>
+</div>
+<br>
 <script>
   document.querySelector(".demos").addEventListener("click", function () {
     window.location.href = "/courses";

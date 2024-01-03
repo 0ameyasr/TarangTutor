@@ -37,6 +37,7 @@ app.use(express.json());
 app.use(morgan("combined"));
 app.use(cookieParser());
 
+
 //importing the routes related to chapter,educatorRoutes,noteRoutes
 import educatorRoutes from './routes/educatorRoutes.js';
 import notesRoutes from './routes/noteRoutes.js';
@@ -137,6 +138,7 @@ app.post('/auth', recaptcha.middleware.verify, async (req, res) => {
     const adminSession = req.cookies.adminSession;
     const contactData = await app.locals.db.collection('contact_details').findOne({});
     const videos = await app.locals.db.collection('videos').find().toArray();
+    const reviews = await app.locals.db.collection('reviews').find().toArray();
     let details = {
         admin_id : contactData._id,
         admin_name : contactData.name,
@@ -145,6 +147,7 @@ app.post('/auth', recaptcha.middleware.verify, async (req, res) => {
         admin_linkedin : contactData.linkedin,
         admin_ig : contactData.instagram,
         videos: videos,
+        reviews:reviews,
     };
     if (!req.recaptcha.error && adminSession === process.env.ADMIN_SESSION_SECRET) {
         try {
@@ -271,6 +274,23 @@ app.post('/delete-notes', async (req, res) => {
         res.status(500).render('commiterror.ejs');
     }
 });
+
+app.post('/delete-review', async (req, res) => {
+    try {
+      const { mail } = req.body;
+      const result = await app.locals.db.collection('reviews').deleteOne({
+        mail: mail,
+      });
+      if (result.deletedCount === 1) {
+        res.status(200).render("success.ejs");
+      } else {
+        res.status(404).render("commiterror.ejs");
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      res.status(500).send('commiterror.ejs');
+    }
+  });  
 
 //created middleware to find related route if request comes
 app.use('/educator', educatorRoutes);

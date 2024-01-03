@@ -398,3 +398,22 @@ text-decoration: none;
   text-decoration: none;
   color: var(--accent-color);
 }
+
+.overcarousel{
+  background-color: rgba(0,0,0,0.2);
+}
+
+.demos{
+  color:var(--text-color);
+  border-radius: 0.25rem;
+}
+.demos:hover{
+  transform: scale(1.05);
+
+}
+.dark-icon{
+  color:var(--primary-color);
+}
+.response-panel{
+  background-color: var(--primary-color);
+}
