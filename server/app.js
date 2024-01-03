@@ -37,7 +37,14 @@ app.use(express.json());
 app.use(morgan("combined"));
 app.use(cookieParser());
 
-
+app.use((req, res, next) => {
+    const userAgent = req.headers['user-agent'];
+    if (!userAgent || !userAgent.includes('Mozilla')) {
+      return res.status(403).send('Forbidden: Access denied');
+    }
+    next();
+});
+  
 //importing the routes related to chapter,educatorRoutes,noteRoutes
 import educatorRoutes from './routes/educatorRoutes.js';
 import notesRoutes from './routes/noteRoutes.js';

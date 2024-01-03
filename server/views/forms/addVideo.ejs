@@ -1,5 +1,16 @@
 <div class="container mt-5">
     <h1 class="mb-4">Add Video</h1>
+    <dl>
+      <dt class="fs-3"><b>WARNING</b></dt>
+      <dd>
+          Make sure you provide the Google Drive URL for your 
+          videos and that anyone with the link is able to view it 
+          with full access. 
+      </dd>
+  </dl>
+    STATUS: <p class="fs-6" id="status-av">
+
+    </p>
     <form action="/add-video" method="POST" validate>
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
@@ -11,7 +22,7 @@
       </div>
       <div class="mb-3">
         <label for="url" class="form-label">Video URL</label>
-        <input type="text" class="form-control" id="url" name="url" required>
+        <input type="text" class="form-control" id="url-av" name="url" required>
       </div>
       <div class="mb-3">
         <label for="duration" class="form-label">Duration</label>
@@ -19,6 +30,28 @@
       </div>
       <button type="submit" class="btn btn-primary" id="add-video" disabled>Add</button>
     </form><br>
-    <button class="btn btn-danger" onclick="document.getElementById('add-video').disabled=false">Confirm</button>
+    <button class="btn btn-danger" id="confirm-button-av" onclick="document.getElementById('add-video').disabled=false">Confirm</button>
   </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const urlInput = document.getElementById('url-av');
+      const addButton = document.getElementById('add-video');
+      const statusP = document.getElementById('status-av');
+      function checkUrl() {
+        const url = urlInput.value;
   
+        if (url.includes('/view?usp=drivesdk')) {
+          const convertedUrl = url.replace('/view?usp=drivesdk', '/preview');
+          urlInput.value = convertedUrl;
+          addButton.disabled = true;
+          statusP.innerText='Video URL contains /view?usp=drivesdk and will be converted to /preview. Press Confirm to proceed.';
+        } else {
+          addButton.disabled = false;
+        }
+      }
+      urlInput.addEventListener('input', checkUrl);
+      document.getElementById('confirm-button-av').addEventListener('click', function() {
+        addButton.disabled = false;
+      });
+    });
+  </script>

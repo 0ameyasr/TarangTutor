@@ -2,6 +2,14 @@
 
 <div class="container mt-5">
     <h1 class="mb-4">Add Notes</h1>
+    <dl>
+        <dt class="fs-3"><b>WARNING</b></dt>
+        <dd>
+            Make sure you provide the Google Drive URL for your 
+            notes and that anyone with the link is able to view it 
+            with full access.
+        </dd>
+    </dl>
     <form action="/add-notes" method="POST" validate>
       <div class="mb-3">
         <label for="topic" class="form-label">Topic</label>
@@ -12,7 +20,7 @@
         <textarea class="form-control" id="course" name="course" rows="3"></textarea>
       </div>
       <div class="mb-3">
-        <label for="url" class="form-label">Notes URL</label>
+        <label for="url" class="form-label">Notes URL (Google Drive)</label>
         <input type="text" class="form-control" id="url" name="url" required>
       </div>
       <button type="submit" class="btn btn-primary" id="add-notes" disabled>Add</button>

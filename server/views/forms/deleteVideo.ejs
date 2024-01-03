@@ -1,11 +1,44 @@
 <div class="container mt-5">
     <h1 class="mb-4">Delete a Video</h1>
+    <dl>
+        <dt class="fs-3"><b>WARNING</b></dt>
+        <dd>
+            Make sure you provide the Google Drive URL for the notes 
+            you have published on the website only for successful 
+            deletion.
+        </dd>
+    </dl>
+    STATUS:<p class="fs-6" id="status-dv"></p>
     <form action="/delete-video" method="POST" validate>
         <div class="mb-3">
             <label for="url" class="form-label">URL</label>
-            <input type="text" class="form-control" id="url" name="url" required>
+            <input type="text" class="form-control" id="dv-url" name="url" required>
         </div>
         <button type="submit" class="btn btn-primary" id="delete-video" disabled>Delete</button>
     </form><br>
-    <button class="btn btn-danger" onclick="document.getElementById('delete-video').disabled=false">Confirm</button>
+    <button class="btn btn-danger" id="confirm-button-dv" onclick="document.getElementById('delete-video').disabled=false">Confirm</button>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const urlInput = document.getElementById('dv-url');
+      const delButton = document.getElementById('delete-video');
+      const statusPdv = document.getElementById('status-dv');
+      function checkUrl() {
+        const url = urlInput.value;
+  
+        if (url.includes('/view?usp=drivesdk')) {
+          const convertedUrl = url.replace('/view?usp=drivesdk', '/preview');
+          urlInput.value = convertedUrl;
+          delButton.disabled = true;
+          statusPdv.innerText = 'Video URL contains /view?usp=drivesdk and will be converted to /preview. Press Confirm to proceed.';
+        } else {
+          delButton.disabled = false;
+        }
+      }
+      urlInput.addEventListener('input', checkUrl);
+      document.getElementById('confirm-button-dv').addEventListener('click', function () {
+        delButton.disabled = false;
+      });
+    });
+  </script>
+  

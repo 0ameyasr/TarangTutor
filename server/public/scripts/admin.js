@@ -23,3 +23,7 @@ document.querySelector(".header-testimonials").addEventListener("click", functio
 document.querySelector(".header-courses").addEventListener("click", function () {
   window.location.href = "/courses";
 });
+
+
+
+
