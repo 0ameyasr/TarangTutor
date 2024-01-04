@@ -15,6 +15,8 @@ import Review from './models/ratingModel.js';
 import { RecaptchaV2 } from 'express-recaptcha';
 import { MongoClient } from 'mongodb';
 import { ObjectId } from 'mongodb';
+import cookieParser from 'cookie-parser';
+import session from 'express-session';
 
 //define the server credentials
 const app = express();
@@ -37,19 +39,35 @@ app.use(express.json());
 app.use(morgan("combined"));
 app.use(cookieParser());
 
-app.use((req, res, next) => {
-    const userAgent = req.headers['user-agent'];
-    if (!userAgent || !userAgent.includes('Mozilla')) {
-      return res.status(403).send('Forbidden: Access denied');
-    }
-    next();
-});
+// app.use((req, res, next) => {
+//     const userAgent = req.headers['user-agent'];
+//     if (!userAgent || !userAgent.includes('Mozilla')) {
+//       return res.status(403).send('Forbidden: Access denied');
+//     }
+//     next();
+// });
+const sessionoptions = {
+    secret: process.env.SECRET_KEY,
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+        httpOnly: true,
+    },
+};
+
+app.use(session(sessionoptions));
+
+
+
+
   
 //importing the routes related to chapter,educatorRoutes,noteRoutes
 import educatorRoutes from './routes/educatorRoutes.js';
 import notesRoutes from './routes/noteRoutes.js';
 import chapterRoutes from './routes/chapterRoutes.js';
-import cookieParser from 'cookie-parser';
+
 
 MongoClient.connect(MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(client => {
@@ -58,6 +76,7 @@ MongoClient.connect(MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true
         app.locals.db = db;
     })
     .catch(err => console.error('Error connecting to MongoDB', err));
+
 
 app.get('/', async (req, res) => {
     const contactData = await app.locals.db.collection('contact_details').findOne({});
@@ -140,6 +159,20 @@ app.get('/admin', async (req, res) => {
 });
 
 
+
+
+const isAdmin = (req, res, next) => {
+    // Check if the session contains the isAdminLoggedIn flag
+    console.log(req.session);
+    console.log(req.session.isAdminLoggedIn);
+    if (req.session.isAdminLoggedIn) {
+        
+        next(); // User is authenticated as an admin, proceed to the route handler
+    } else {
+        res.status(403).send('Forbidden: Access denied');
+    }
+};
+
 //google re-captcha and authentication of admin
 app.post('/auth', recaptcha.middleware.verify, async (req, res) => {
     const adminSession = req.cookies.adminSession;
@@ -164,6 +197,9 @@ app.post('/auth', recaptcha.middleware.verify, async (req, res) => {
             }
 
             if (req.body.entered_pass === adminCredentials.passkey && req.body.entered_user === adminCredentials.user) {
+                req.session.isAdminLoggedIn = true;
+                console.log(req.session);
+                
                 res.render('dashboard.ejs',details);
             } else {
                 res.render('error.ejs');
@@ -178,7 +214,7 @@ app.post('/auth', recaptcha.middleware.verify, async (req, res) => {
 });
 
 //handling admin update for the personal details
-app.post('/update-contact/:id', async (req, res) => {
+app.post('/update-contact/:id',isAdmin, async (req, res) => {
     try {
         const { name, mob, mail, linkedin, instagram } = req.body;
         const contactDetailsId = req.params.id;
@@ -207,7 +243,7 @@ app.post('/update-contact/:id', async (req, res) => {
     }
 });
 
-app.post('/add-video',async(req,res)=>{
+app.post('/add-video',isAdmin,async(req,res)=>{
     try{
         const {title, description,url,duration} = req.body;
         app.locals.db.collection('videos').insertOne(
@@ -226,7 +262,7 @@ app.post('/add-video',async(req,res)=>{
     }
 });
 
-app.post('/add-notes',async(req,res)=>{
+app.post('/add-notes',isAdmin,async(req,res)=>{
     try{
         const {topic,course,url} = req.body;
         app.locals.db.collection('notes').insertOne(
@@ -244,7 +280,7 @@ app.post('/add-notes',async(req,res)=>{
     }
 });
 
-app.post('/delete-video', async (req, res) => {
+app.post('/delete-video',isAdmin, async (req, res) => {
     try {
         const { url } = req.body;
         const videoId = req.params.id;
@@ -263,7 +299,7 @@ app.post('/delete-video', async (req, res) => {
     }
 });
 
-app.post('/delete-notes', async (req, res) => {
+app.post('/delete-notes',isAdmin, async (req, res) => {
     try {
         const { url } = req.body;
         const videoId = req.params.id;
@@ -282,7 +318,7 @@ app.post('/delete-notes', async (req, res) => {
     }
 });
 
-app.post('/delete-review', async (req, res) => {
+app.post('/delete-review',isAdmin, async (req, res) => {
     try {
       const { mail } = req.body;
       const result = await app.locals.db.collection('reviews').deleteOne({
