@@ -175,7 +175,6 @@ const isAdmin = (req, res, next) => {
 
 //google re-captcha and authentication of admin
 app.post('/auth', recaptcha.middleware.verify, async (req, res) => {
-    const adminSession = req.cookies.adminSession;
     const contactData = await app.locals.db.collection('contact_details').findOne({});
     const videos = await app.locals.db.collection('videos').find().toArray();
     const reviews = await app.locals.db.collection('reviews').find().toArray();
@@ -189,13 +188,12 @@ app.post('/auth', recaptcha.middleware.verify, async (req, res) => {
         videos: videos,
         reviews:reviews,
     };
-    if (!req.recaptcha.error && adminSession === process.env.ADMIN_SESSION_SECRET) {
+    if (!req.recaptcha.error) {
         try {
             const adminCredentials = await app.locals.db.collection('admin_credentials').findOne({});
             if (!adminCredentials) {
                 throw new Error('Admin credentials not found');
             }
-
             if (req.body.entered_pass === adminCredentials.passkey && req.body.entered_user === adminCredentials.user) {
                 req.session.isAdminLoggedIn = true;
                 console.log(req.session);
