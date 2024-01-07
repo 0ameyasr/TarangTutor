@@ -342,7 +342,7 @@ app.use('/notes', notesRoutes);
 mongoose.connect(MONGO_URL)
     .then(() => {
         app.listen(PORT, (req, res) => {
-            console.log(`listening @port ${PORT}`);
+            console.log(`Server is live :@${PORT}`);
         })
     })
     .catch((err) => {

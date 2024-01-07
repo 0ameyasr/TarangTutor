@@ -3,41 +3,50 @@
     <dl>
         <dt class="fs-3"><b>WARNING</b></dt>
         <dd>
-            Make sure you provide the Google Drive URL for the notes 
+            Make sure you provide the Google Drive URL for the video 
             you have published on the website only for successful 
             deletion.
         </dd>
     </dl>
-    STATUS:<p class="fs-6" id="status-dv"></p>
+    STATUS:<p class="fs-6 special-font" id="status-dv">CONTINUE</p>
     <form action="/delete-video" method="POST" validate>
         <div class="mb-3">
             <label for="url" class="form-label">URL</label>
-            <input type="text" class="form-control" id="dv-url" name="url" required>
+            <input type="text" class="form-control" id="url-dv" name="url" required>
         </div>
         <button type="submit" class="btn btn-primary" id="delete-video" disabled>Delete</button>
     </form><br>
     <button class="btn btn-danger" id="confirm-button-dv" onclick="document.getElementById('delete-video').disabled=false">Confirm</button>
 </div>
-<script>
+  <script>
     document.addEventListener('DOMContentLoaded', function () {
-      const urlInput = document.getElementById('dv-url');
-      const delButton = document.getElementById('delete-video');
-      const statusPdv = document.getElementById('status-dv');
+      const urlInput = document.getElementById('url-dv');
+      const addButton = document.getElementById('delete-video');
+      const statusP = document.getElementById('status-dv');
+  
       function checkUrl() {
         const url = urlInput.value;
   
         if (url.includes('/view?usp=drivesdk')) {
           const convertedUrl = url.replace('/view?usp=drivesdk', '/preview');
           urlInput.value = convertedUrl;
-          delButton.disabled = true;
-          statusPdv.innerText = 'Video URL contains /view?usp=drivesdk and will be converted to /preview. Press Confirm to proceed.';
+          addButton.disabled = true;
+          statusP.innerText = 'Video URL contains /view?usp=drivesdk an be converted to /preview for embedding.';
+        }
+        else if(url.includes('/view?usp=drive_link')) {
+          const convertedUrl = url.replace('/view?usp=drive_link', '/preview');
+          urlInput.value = convertedUrl;
+          addButton.disabled = true;
+          statusP.innerText = 'Video URL contains /view?usp=drive_link and will be converted to /preview for embedding.';
         } else {
-          delButton.disabled = false;
+          addButton.disabled = false;
         }
       }
+      checkUrl();
       urlInput.addEventListener('input', checkUrl);
+      urlInput.addEventListener('paste', checkUrl);
       document.getElementById('confirm-button-dv').addEventListener('click', function () {
-        delButton.disabled = false;
+        addButton.disabled = false;
       });
     });
   </script>

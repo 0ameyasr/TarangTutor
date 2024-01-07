@@ -34,13 +34,16 @@
     </center>
   </p>
   <center>
-    <a class="btn btn-outline-light demos fs-3" style="color: var(--text-color);" download><i
+    <a class="btn btn-outline-light demos-new fs-3" style="color: var(--text-color);" download><i
         class="fa-solid fa-video"></i>&nbsp;Get a Free Demo</a>
   </center>
 </div>
 <br>
 <script>
   document.querySelector(".demos").addEventListener("click", function () {
+    window.location.href = "/courses";
+  });
+  document.querySelector(".demos-new").addEventListener("click", function () {
     window.location.href = "/courses";
   });
 </script>

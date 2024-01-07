@@ -170,82 +170,63 @@
   <br>
   <div class="container-fluid response-panel p-3">
     <h1>Response Panel</h1>
-    <div class="accordion accordion-flush" id="accordionFlushExample">
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne"
-            style="background-color: var(--accent-color);">
-            All Reviews (<%=reviews.length%>)
-          </button>
-        </h2>
-        <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body" style="background-color: var(--primary-color);">
-            <div class="table-responsive">
-              <table class="table">
-                <tr>
-                  <td>Sr.No</td>
-                  <td>Author</td>
-                  <td>Created At</td>
-                  <td>Comment</td>
-                  <td>Rating</td>
-                  <td>Mail</td>
-                  <td>Response</td>
-                  <td>Action</td>
-                </tr>
-                <% for(let i=0;i<reviews.length;i++) {%>
-                  <tr>
-                    <td>
-                      <%=i+1%>
-                    </td>
-                    <td>
-                      <%=reviews[i].author%>
-                    </td>
-                    <td>
-                      <%=reviews[i].createdAt%>
-                    </td>
-                    <td>
-                      <%=reviews[i].comment%>
-                    </td>
-                    <td>
-                      <%=reviews[i].rating%>
-                    </td>
-                    <td>
-                      <%=reviews[i].mail%>
-                    </td>
-                    <td>
-                      <a class="btn btn-primary" href="mailto:<%=reviews[i].mail%>">Respond</a>
-                    </td>
-                    <td>
-                      <a class="btn btn-danger" name="<%=reviews[i].mail%>" onclick="deleteReview(this)">Delete</a>
-                    </td>
-                  </tr>
-                  <%}%>
-              </table>
-            </div>
+    <div class="table-responsive">
+      <table class="table">
+        <tr>
+          <td>Sr.No</td>
+          <td>Author</td>
+          <td>Created At</td>
+          <td>Comment</td>
+          <td>Rating</td>
+          <td>Mail</td>
+          <td>Response</td>
+        </tr>
+        <% for(let i=0;i<reviews.length;i++) {%>
+          <tr>
+            <td>
+              <%=i+1%>
+            </td>
+            <td>
+              <%=reviews[i].author%>
+            </td>
+            <td>
+              <%=reviews[i].createdAt%>
+            </td>
+            <td>
+              <%=reviews[i].comment%>
+            </td>
+            <td>
+              <%=reviews[i].rating%>
+            </td>
+            <td>
+              <%=reviews[i].mail%>
+            </td>
+            <td>
+              <a class="btn btn-primary" href="mailto:<%=reviews[i].mail%>">Respond</a>
+            </td>
+          </tr>
+          <%}%>
+      </table>
+    </div>
+    <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary info-hook">
+      <div class="px-0">
+        <h1 class="mb-4">Delete a Review</h1>
+        <p class="fs-6">
+          Only delete reviews for maintainence purposes. If you think that the remarks or comments
+          in the review are derogatory or unnecessary, you may want to delete it. However, it is
+          important to maintain business transparency.
+        </p>
+        <form action="/delete-review" method="POST" validate>
+          <div class="mb-3">
+            <label for="mail" class="form-label">Author's Mail</label>
+            <input type="text" class="form-control" id="email" name="mail" required>
           </div>
-        </div>
-      </div>
-      <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary info-hook">
-        <div class="px-0">
-          <h1 class="mb-4">Delete a Review</h1>
-          <p class="fs-6">
-            Only delete reviews for maintainence purposes. If you think that the remarks or comments
-            in the review are derogatory or unnecessary, you may want to delete it. However, it is
-            important to maintain business transparency.
-          </p>
-          <form action="/delete-review" method="POST" validate>
-            <div class="mb-3">
-              <label for="mail" class="form-label">Author's Mail</label>
-              <input type="text" class="form-control" id="email" name="mail" required>
-            </div>
-            <button type="submit" class="btn btn-primary" id="delete-review" disabled>Delete</button>
-          </form><br>
-          <p>Before you delete the review, press Confirm to confirm your action.
-            <button class="btn btn-danger"
-              onclick="document.getElementById('delete-review').disabled=false">Confirm</button>
-          </p>
-        </div>
+          <button type="submit" class="btn btn-primary" id="delete-review" disabled>Delete</button>
+        </form><br>
+        <p>Before you delete the review, press Confirm to confirm your action.
+          <button class="btn btn-danger"
+            onclick="document.getElementById('delete-review').disabled=false">Confirm</button>
+        </p>
       </div>
     </div>
   </div>
